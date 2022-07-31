@@ -8,21 +8,6 @@ class Page extends CI_Controller {
 		$this->load->model('Model_Page');
 	}
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
 	public function index()
 	{
 		$data['mhs']= $this->Model_Page->tampil_mhs('mahasiswa')->result();
@@ -37,4 +22,30 @@ class Page extends CI_Controller {
 		$this->load->view('docs');
 		$this->load->view('footer');
 	}
+
+	public function request()
+	{
+		$data = array(
+			'nama' => $this->input->post('nama'),
+      'email' => $this->input->post('email'),
+      'hp' => $this->input->post('hp'),
+      'tujuan' => $this->input->post('tujuan'),
+		);
+		$this->db->insert('request',$data);
+        $this->session->set_flashdata('msg', '
+				<div class="position-fixed top-0 end-0 p-3 show" style="z-index: 9999">
+					<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+						<div class="toast-header">
+							<strong class="me-auto">Bootstrap</strong>
+							<small>Now</small>
+							<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+						</div>
+						<div class="toast-body">
+							Hello, world! This is a toast message.
+						</div>
+					</div>
+				</div>
+				');
+			 redirect(base_url('page/docs'));      
+	}  
 }

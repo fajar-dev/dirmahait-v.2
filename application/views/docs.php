@@ -1,3 +1,6 @@
+
+<?= $this->session->flashdata('msg'); ?>
+
 <main class="api"> 
     <div class="api-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
       <div class="container">
@@ -115,7 +118,7 @@
 
           </div>
           <div class="col-lg-12 wow fadeInUp animated" data-wow-duration="0.5s" data-wow-delay="0.25s" style="visibility: visible;-webkit-animation-duration: 0.5s; -moz-animation-duration: 0.5s; animation-duration: 0.5s;-webkit-animation-delay: 0.25s; -moz-animation-delay: 0.25s; animation-delay: 0.25s;">
-            <form id="contact" action="" method="post">
+            <form id="contact"  method="post" action="<?= base_url('page/request') ?>">
               <div class="row">
                 <div class="col-lg-5">
                   <div id="map">
@@ -135,25 +138,15 @@
                   <div class="fill-form">
                     <div class="row">
                       <div class="col-lg-6">
-                        <fieldset>
-                          <input type="name" name="name" id="name" placeholder="Nama" autocomplete="on" required="">
-                        </fieldset>
-                        <fieldset>
-                          <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Email" required="">
-                        </fieldset>
-                        <fieldset>
-                          <input type="number" name="subject" id="subject" placeholder="No HP" autocomplete="on">
-                        </fieldset>
-                      </div>
-                      <div class="col-lg-6">
-                        <fieldset>
-                          <textarea name="message" type="text" class="form-control" id="message" placeholder="Tujuan Penggunaan.." required=""></textarea>  
-                        </fieldset>
-                      </div>
-                      <div class="col-lg-12">
-                        <fieldset>
+                          <input type="text" name="nama"  placeholder="Nama" required="">
+                          <input type="text" name="email"  pattern="[^ @]*@[^ @]*" placeholder="Email" required="">
+                          <input type="number" name="hp" placeholder="No HP" required>
+                        </div>
+                        <div class="col-lg-6">
+                            <textarea name="tujuan" type="text" class="form-control"  placeholder="Tujuan Penggunaan.." required=""></textarea>  
+                        </div>
+                        <div class="col-lg-12">
                           <button type="submit" id="form-submit" class="main-button ">Kirim</button>
-                        </fieldset>
                       </div>
                     </div>
                   </div>
@@ -166,3 +159,4 @@
     </div>
 
   </main>
+
