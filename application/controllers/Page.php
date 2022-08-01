@@ -23,8 +23,7 @@ class Page extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function request()
-	{
+	public function request(){
 		$data = array(
 			'nama' => $this->input->post('nama'),
       'email' => $this->input->post('email'),
@@ -34,15 +33,13 @@ class Page extends CI_Controller {
 		$this->db->insert('request',$data);
         $this->session->set_flashdata('msg', '
 				<div class="position-fixed top-0 end-0 p-3 show" style="z-index: 9999">
-					<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-						<div class="toast-header">
-							<strong class="me-auto">Bootstrap</strong>
-							<small>Now</small>
-							<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-						</div>
-						<div class="toast-body">
-							Hello, world! This is a toast message.
-						</div>
+					<div id="liveToast" class="toast align-items-center text-white bg-success border-0 show" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="d-flex">
+					<div class="toast-body">
+						<strong>Terkirim !</strong><br>Permintaan anda sedang di proses
+					</div>
+						<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
 					</div>
 				</div>
 				');
