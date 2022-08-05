@@ -17,7 +17,7 @@
                   <div class="card mb-4">
                     <h5 class="card-header">Biodata ku</h5>
                     <!-- Account -->
-                    <form id="formAccountSettings" method="POST" action="<?= base_url('user/biodata_update') ?>" >
+                    <?php echo form_open_multipart('user/biodata_update');?>
                       <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                           <img
@@ -38,6 +38,7 @@
                                 class="account-file-input"
                                 hidden
                                 accept="image/png, image/jpeg"
+                                name="foto"
                               />
                             </label>
                             <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
@@ -52,21 +53,9 @@
                       <hr class="my-0" />
                       <div class="card-body">
                         <div class="row">
-                          <div class="mb-3 col-md-6">
+                          <div class="mb-3 col-md-12">
                             <label for="nim" class="form-label">NIM</label>
                             <input class="form-control" type="text" value="<?php echo htmlentities($user['nim'], ENT_QUOTES, 'UTF-8');?>" readonly id="nim" />
-                          </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input
-                              class="form-control"
-                              type="email"
-                              id="firstName"
-                              name="email"
-                              value="<?php echo htmlentities($user['email'], ENT_QUOTES, 'UTF-8');?>"
-                              autofocus
-                              required
-                            />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="nama" class="form-label">Nama Lengkap</label>
@@ -77,6 +66,28 @@
                               name="nama"
                               value="<?php echo htmlentities($user['nama'], ENT_QUOTES, 'UTF-8');?>"
                               placeholder="Nama Lengkap"
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
+                            <input
+                              class="form-control"
+                              type="email"
+                              id="firstName"
+                              name="email"
+                              value="<?php echo htmlentities($user['email'], ENT_QUOTES, 'UTF-8');?>"
+                              required
+                            />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="sekolah" class="form-label">Asal Sekolah</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="sekolah"
+                              name="sekolah"
+                              value="<?php echo htmlentities($user['asal_sekolah'], ENT_QUOTES, 'UTF-8');?>"
+                              placeholder="Asal Sekolah"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -226,7 +237,7 @@
                           <button type="submit" class="btn btn-primary me-2">Save changes</button>
                           <button type="reset" class="btn btn-outline-secondary">Reset</button>
                         </div>
-                      </form>
+                      <?php echo form_close(); ?>   
                     </div>
                     <!-- /Account -->
                   </div>

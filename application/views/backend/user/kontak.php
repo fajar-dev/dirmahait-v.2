@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                   <div class="card mb-4">
                     <div class="card-header d-flex align-items-center justify-content-between">
-                      <h5 class="card-title m-0 me-2">Kontak Darurat</h5>
+                      <h5 class="card-title m-0 me-2">Daftar Kontak</h5>
                       <div class="dropdown">
                         <button class="btn btn-primary btn-sm rounded-pill" type="button" data-bs-toggle="modal" data-bs-target="#tambah">
                           <i class="bx bx-plus"></i> Tambah Kontak

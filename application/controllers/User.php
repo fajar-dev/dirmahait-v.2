@@ -8,7 +8,22 @@ class User extends CI_Controller {
 		$this->load->model('Model_Page');
 
     if($this->session->userdata('status')!= "login"){
-			redirect(base_url());
+			$this->session->set_flashdata('msg', '
+			<div class="position-fixed" style="z-index: 9999999">
+				<div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+					<div class="toast-header">
+						<i class="bx bx-bell me-2"></i>
+						<div class="me-auto fw-semibold">Notifikasi</div>
+						<small>Now</small>
+						<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+					</div>
+					<div class="toast-body">
+						Silahkan Login Terlebih dahulu
+					</div>
+				</div>
+			</div>
+			');
+			redirect(base_url('auth'));
 		}
 	}
 
@@ -69,13 +84,13 @@ class User extends CI_Controller {
 					'agama' => $this->input->post('agama'),
 					'alamat_asal' => $this->input->post('asal'),
 					'alamat_kost' => $this->input->post('kost'),
-					'asal_sekolah' => $this->input->post('asal_sekolah'),
+					'asal_sekolah' => $this->input->post('sekolah'),
 					'email' => $this->input->post('email'),
 					'wa' => $this->input->post('wa'),
 					'ig' => $this->input->post('ig'),
 					'quotes' => $this->input->post('quotes'),
 			);
-			$this->db->where('nim', $this->session->userdata('nim'));
+				$this->db->where('nim', $this->session->userdata('nim'));
 				$this->db->update('mahasiswa',$data);
 				$this->session->set_flashdata('msg', '
 				<div class="position-fixed" style="z-index: 9999999">
@@ -95,29 +110,51 @@ class User extends CI_Controller {
       redirect(base_url('user/biodata')); 
 		}else{
 			$config['upload_path']        = './file';
-		$config['allowed_types']       = 'img|png|jpeg|gif|jpg';
-		$config['encrypt_name']        = true;
-		$config['max_size']            = 10000000;
-		$this->load->library('upload', $config);
-		if ( ! $this->upload->do_upload('foto')){
-			$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Gagal!! pastikan ekstensi gambar berupa gif, jpg atau png.</div>');
-			redirect('page/pencatatan');
+			$config['allowed_types']       = 'img|png|jpeg|gif|jpg';
+			$config['encrypt_name']        = true;
+			$config['max_size']            = 10000000;
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('foto')){
+				$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Gagal!! pastikan ekstensi gambar berupa gif, jpg atau png.</div>');
+				redirect('page/pencatatan');
 			}else{
-							$data = array('foto' => $this->upload->data());
-							$uploadData = $this->upload->data();
-							$hasil = $uploadData['file_name'];
-							$data = array(
-							'id_afdeling' => $this->input->post('id'),
-							'jenis' => $this->input->post('jenis'),
-							'pj' => $this->input->post('pj'),
-							'berat' => $this->input->post('berat'),
-							'waktu' => $this->input->post('waktu'),
-							'foto' => $hasil,
-							'log_petugas' => $this->session->userdata('nama')
-						);
-						$this->db->insert('sampah',$data);
-						$this->session->set_flashdata('msg','tambah');
-						redirect(base_url('page/pencatatan'));
+								$data = array('foto' => $this->upload->data());
+								$uploadData = $this->upload->data();
+								$hasil = $uploadData['file_name'];
+								$data = array(
+									'nama' => $this->input->post('nama'),
+									'kelamin' => $this->input->post('jk'),
+									'tempat_lahir' => $this->input->post('tempat_lahir'),
+									'tgl_lahir' => $this->input->post('tgl_lahir'),
+									'hobi' => $this->input->post('hobi'),
+									'agama' => $this->input->post('agama'),
+									'alamat_asal' => $this->input->post('asal'),
+									'alamat_kost' => $this->input->post('kost'),
+									'asal_sekolah' => $this->input->post('sekolah'),
+									'email' => $this->input->post('email'),
+									'wa' => $this->input->post('wa'),
+									'ig' => $this->input->post('ig'),
+									'quotes' => $this->input->post('quotes'),
+									'foto' => $hasil,
+							);
+							$this->db->where('nim', $this->session->userdata('nim'));
+							$this->db->update('mahasiswa',$data);
+							$this->session->set_flashdata('msg', '
+							<div class="position-fixed" style="z-index: 9999999">
+								<div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+									<div class="toast-header">
+										<i class="bx bx-bell me-2"></i>
+										<div class="me-auto fw-semibold">Notifikasi</div>
+										<small>Now</small>
+										<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+									</div>
+									<div class="toast-body">
+										Biodata kamu berhasil di update
+									</div>
+								</div>
+							</div>
+							');
+						redirect(base_url('user/biodata')); 
 			}
 		}
 	}

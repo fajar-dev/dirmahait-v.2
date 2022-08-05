@@ -30,7 +30,7 @@
                                 <?= $salam ?>
                               </p>
     
-                              <a href="javascript:;" class="btn btn-sm btn-outline-primary">Atur Biodata</a>
+                              <a href="<?= site_url('user/biodata') ?>" class="btn btn-sm btn-outline-primary">Atur Biodata</a>
                             </div>
                           </div>
                           <div class="col-sm-5 text-center text-sm-left">
@@ -53,7 +53,7 @@
                           <h5 class="m-0 me-2">Pengumuman</h5>
                         </div>
                         <div class="card-body">
-                          <p><?= $set->pengumuman; ?></p>
+                          <?= $set->pengumuman; ?>
                         </div>
                       </div>
                     </div>

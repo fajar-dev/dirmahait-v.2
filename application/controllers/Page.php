@@ -45,4 +45,9 @@ class Page extends CI_Controller {
 				');
 			 redirect(base_url('page/docs'));      
 	}  
+
+	public function error()
+	{
+		$this->load->view('errors/error404');
+	}
 }

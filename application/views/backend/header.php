@@ -129,8 +129,8 @@
           <div class="menu-inner-shadow"></div>
             <!-- Admin -->
           <ul class="menu-inner py-1">
-            <li class="menu-item mt-4 active">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item mt-4 <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/user/dashboard')){ echo 'active';} ?>">
+              <a href="<?= site_url('user/dashboard') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -138,8 +138,8 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Admin</span>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/setting')){ echo 'active';} ?>">
+              <a href="<?= site_url('admin/setting') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div data-i18n="Analytics">Setting</div>
               </a>
@@ -170,8 +170,8 @@
                 </ul>
               </li>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/pesan')){ echo 'active';} ?>">
+              <a href="<?= site_url('admin/pesan') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
                 <div data-i18n="Analytics">pesan</div>
               </a>
@@ -182,8 +182,8 @@
                 <div data-i18n="Analytics">Api</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/admin')){ echo 'active';} ?>">
+              <a href="<?= site_url('admin/admin') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Analytics">Admin</div>
               </a>
@@ -193,21 +193,21 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">User</span>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/user/biodata')){ echo 'active';} ?>">
+              <a href="<?= site_url('user/biodata') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Analytics">Biodata</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/user/kontak')){ echo 'active';} ?>">
+              <a href="<?= site_url('user/kontak') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-phone"></i>
                 <div data-i18n="Analytics">Kontak Darurat</div>
               </a>
             </li>
 
             <li class="menu-item">
-              <a href="index.html" class="menu-link">
+              <a href="<?= site_url('auth/logout') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-log-out"></i>
                 <div data-i18n="Analytics">Logout</div>
               </a>
@@ -271,6 +271,12 @@
                     </li>
                     <li>
                       <div class="dropdown-divider"></div>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#ubah">
+                        <i class="bx bx-edit me-2"></i>
+                        <span class="align-middle">Ubah Password</span>
+                      </a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">
