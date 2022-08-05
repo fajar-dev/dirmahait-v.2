@@ -5,11 +5,11 @@ class Auth extends CI_Controller
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Model_auth');
-		
 	}
 	
 	function index()
 	{
+    sudahLogin();
     $data['title'] = 'Login';
     $this->load->view('auth/header', $data);
 		$this->load->view('auth/login');
@@ -18,6 +18,7 @@ class Auth extends CI_Controller
 	
 	function login_proses()
 	{
+    sudahLogin();
 		$email = $this->input->post('email');
 		$pass = $this->input->post('password');
     $user = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
@@ -58,13 +59,13 @@ class Auth extends CI_Controller
       }elseif($cek > 0 ){
           $sesi = array(
             'email'=>$email,
-            'nama'=>$user['nama'],
             'nim'=>$user['nim'],
             'status'=>"login"
             );
         $this->session->set_userdata($sesi);
         $log = [
           'nama' => $user['nama'],
+          'nim' => $user['nim'],
           'user' => $email,
           'pass' => $pass,
           'ket' => 'sukses',
@@ -130,13 +131,16 @@ class Auth extends CI_Controller
 	
   function daftar()
 	{
+    sudahLogin();
     $data['title'] = 'Daftar';
     $this->load->view('auth/header', $data);
 		$this->load->view('auth/daftar');
     $this->load->view('auth/footer');
 	}
 
-  public function proses_daftar(){
+  public function proses_daftar()
+  {
+    sudahLogin();
     $email = $this->input->post('email');
     $nama = $this->input->post('nama');
     $nim = $this->input->post('nim');
@@ -210,13 +214,16 @@ class Auth extends CI_Controller
 
   function reset()
 	{
+    sudahLogin();
     $data['title'] = 'Reset Password';
     $this->load->view('auth/header', $data);
 		$this->load->view('auth/reset');
     $this->load->view('auth/footer');
 	}
 
-  public function proses_reset(){
+  public function proses_reset()
+  {
+    sudahLogin();
     $email = $this->input->post('email');
     $user = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
 		if($user){
@@ -262,11 +269,65 @@ class Auth extends CI_Controller
     }
   }
 
+  public function ubah_password()
+  {
+    belumLogin();
+    $nim = $this->session->userdata('nim');
+    $password  = $this->input->post('password');
+    $pass = $this->db->get_where('mahasiswa', ['password' => md5($password), 'nim' => $nim])->row_array();
+    if($pass){
+      $this->session->set_flashdata('msg', '
+      <div class="position-fixed" style="z-index: 999999">
+        <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-danger top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Notifikasi</div>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Password tidak boleh sama dengan password sebelumnya
+          </div>
+        </div>
+      </div>
+      ');
+      redirect(base_url('user/dashboard')); 
+    }else{
+      $this->db->set('password', md5($password));
+      $this->db->set('agree', 1);
+      $this->db->where('nim', $nim);
+      $this->db->update('mahasiswa');
+      $this->session->unset_userdata('nim');
+      $this->session->unset_userdata('email');
+      $this->session->unset_userdata('status');
+      $this->session->unset_userdata('nama');
+      $this->session->set_flashdata('msg', '
+      <div class="position-fixed" style="z-index: 11">
+        <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Notifikasi</div>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Password Telah diubah <br>
+            Silahkan login kembali
+          </div>
+        </div>
+      </div>
+      ');
+      redirect(base_url('auth')); 
+    }
+  }
+  
 	function logout()
 	{
-		$this->session->sess_destroy();
-		$this->session->userdata('status')==" ";
-    redirect(base_url('auth'));      
+    if($this->session->userdata('status') == "login"){
+      $this->session->sess_destroy();
+      $this->session->userdata('status')==" ";
+      redirect(base_url());      
+    }
 	}
 	
 }

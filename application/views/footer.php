@@ -28,12 +28,12 @@
                   <div class="col-lg-7 py-5 px-4">
                     <h4>Login</h4>
                     <h5 class="text-muted">Direktori Mahasiswa Teknik Informatika Universitas Malikussaleh Angkatan 2020</h5>
-                    <form action="" class="row g-4 pt-4">
+                    <form action="<?= base_url('auth/login_proses') ?>" method="POST" class="row g-4 pt-4">
                       <div class="col-12">
                           <label>Username<span class="text-danger">*</span></label>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                              <input type="text" class="form-control" placeholder="Enter Username">
+                              <input type="text" class="form-control" name="email" placeholder="Enter Username" required>
                           </div>
                       </div>
 
@@ -44,7 +44,7 @@
                           </div>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                              <input type="text" class="form-control" placeholder="Enter Password">
+                              <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
                           </div>
                       </div>
 

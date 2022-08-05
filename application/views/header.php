@@ -60,8 +60,19 @@ https://templatemo.com/tm-568-digimedia
             <ul class="nav">
               <li class="scroll-to-section"><a href="<?= site_url() ?>">Home</a></li>
               <li class="scroll-to-section"><a href="<?= site_url('page/docs') ?>">Docs API</a></li>
-              <li class="scroll-to-section  d-lg-block d-md-none d-lg-none"><a href="#about" style="background-color: #696CFF !important; color:#fff !important;" data-bs-toggle="modal" data-bs-target="#modallogin">Login</a></li>
-              <li class="scroll-to-section d-lg-block d-md-block "> <div class="border-first-button"><a href="#" data-bs-toggle="modal" data-bs-target="#modallogin" >Login</a></div></li> 
+              <?php
+                if($this->session->userdata('status') == "login"){
+                  echo'
+                  <li class="scroll-to-section  d-lg-block d-md-none d-lg-none"><a href="'.base_url("user/dahsboard").'" style="background-color: #696CFF !important; color:#fff !important;">Dashboard</a></li>
+                  <li class="scroll-to-section d-lg-block d-md-block "> <div class="border-first-button"><a href="'.base_url("user/dahsboard").'">Dashboard</a></div></li> 
+                  ';
+                }else{
+                  echo'
+                  <li class="scroll-to-section  d-lg-block d-md-none d-lg-none"><a href="#about" style="background-color: #696CFF !important; color:#fff !important;" data-bs-toggle="modal" data-bs-target="#modallogin">Login</a></li>
+                  <li class="scroll-to-section d-lg-block d-md-block "> <div class="border-first-button"><a href="#" data-bs-toggle="modal" data-bs-target="#modallogin" >Login</a></div></li> 
+                  ';
+                }
+              ?>
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
