@@ -176,8 +176,8 @@
                 <div data-i18n="Analytics">pesan</div>
               </a>
             </li>
-            <li class="menu-item">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/apikey')){ echo 'active';} ?>">
+              <a href="<?= site_url('admin/apikey') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-code"></i>
                 <div data-i18n="Analytics">Api</div>
               </a>

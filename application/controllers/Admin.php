@@ -12,6 +12,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+  public function apikey()
+	{
+    $data['title'] = 'API Key';
+    $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
+    $data['user'] = $q->row_array();
+    $data['hasil'] = $this->db->get('api')->result();
+    $this->load->view('backend/header', $data);
+		$this->load->view('backend/admin/apikey');
+		$this->load->view('backend/footer');
+	}
+
   public function pesan()
 	{
     $data['title'] = 'Pesan';
