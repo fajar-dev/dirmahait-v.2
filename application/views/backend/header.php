@@ -135,6 +135,9 @@
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
             </li>
+              <?php
+                if( $user['level'] == 1 ) {
+              ?>
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Admin</span>
             </li>
@@ -144,32 +147,30 @@
                 <div data-i18n="Analytics">Setting</div>
               </a>
             </li>
-            <li class="menu-item">
-              <li class="menu-item">
+              <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_aktif') OR ($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_suspend') OR ($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_pending')){ echo 'active open';} ?>">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                   <i class="menu-icon tf-icons bx bx-group"></i>
                   <div data-i18n="Layouts">Mahasiswa</div>
                 </a>
   
                 <ul class="menu-sub">
-                  <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
+                  <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_pending')){ echo 'active';} ?>">
+                    <a href="<?= site_url('admin/mhs_pending') ?>" class="menu-link">
                       <div data-i18n="Without menu">Pending</div>
                     </a>
                   </li>
-                  <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
+                  <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_aktif')){ echo 'active';} ?>">
+                    <a href="<?= site_url('admin/mhs_aktif') ?>" class="menu-link">
                       <div data-i18n="Without navbar">Aktif</div>
                     </a>
                   </li>
-                  <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
+                  <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/mhs_suspend')){ echo 'active';} ?>">
+                    <a href="<?= site_url('admin/mhs_suspend') ?>" class="menu-link">
                       <div data-i18n="Container">Suspend</div>
                     </a>
                   </li>
                 </ul>
               </li>
-            </li>
             <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/pesan')){ echo 'active';} ?>">
               <a href="<?= site_url('admin/pesan') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>
@@ -188,7 +189,9 @@
                 <div data-i18n="Analytics">Admin</div>
               </a>
             </li>
-
+              <?php
+                }
+              ?>
             <!-- user -->
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">User</span>

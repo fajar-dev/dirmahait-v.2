@@ -25,7 +25,6 @@
                             alt="user-avatar"
                             class="d-block rounded"
                             height="100"
-                            width="100"
                             id="uploadedAvatar"
                           />
                           <div class="button-wrapper">
@@ -58,12 +57,13 @@
                             <input class="form-control" type="text" value="<?php echo htmlentities($user['nim'], ENT_QUOTES, 'UTF-8');?>" readonly id="nim" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="nama" class="form-label">Nama Lengkap</label>
+                            <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
                             <input
                               class="form-control"
                               type="text"
                               id="nama"
                               name="nama"
+                              required
                               value="<?php echo htmlentities($user['nama'], ENT_QUOTES, 'UTF-8');?>"
                               placeholder="Nama Lengkap"
                             />

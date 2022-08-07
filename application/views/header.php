@@ -63,7 +63,7 @@ https://templatemo.com/tm-568-digimedia
               <?php
                 if($this->session->userdata('status') == "login"){
                   echo'
-                  <li class="scroll-to-section  d-lg-block d-md-none d-lg-none"><a href="'.base_url("user/dahsboard").'" style="background-color: #696CFF !important; color:#fff !important;">Dashboard</a></li>
+                  <li class="scroll-to-section  d-lg-block d-md-none d-lg-none"><a href="'.base_url("user/dashboard").'" style="background-color: #696CFF !important; color:#fff !important;">Dashboard</a></li>
                   <li class="scroll-to-section d-lg-block d-md-block "> <div class="border-first-button"><a href="'.base_url("user/dahsboard").'">Dashboard</a></div></li> 
                   ';
                 }else{
