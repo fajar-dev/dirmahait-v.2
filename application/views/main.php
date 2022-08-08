@@ -66,9 +66,12 @@
                   }
                 ?>
             </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination"></ul>
+            </nav>
           </div>
-    </div>
-  </main>
+        </div>
+      </main>
   
               <!---------------Modal----------------------->
                 <?php

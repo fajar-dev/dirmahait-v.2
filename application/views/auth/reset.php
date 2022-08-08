@@ -3,6 +3,11 @@
         <div class="authentication-inner py-4">
           <!-- Forgot Password -->
           <div class="card">
+            <div class="card-header">
+                <a href="<?= base_url() ?>">
+                <i class="bx bx-left-arrow-alt"></i> Back to Home
+                </a>
+            </div>
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">

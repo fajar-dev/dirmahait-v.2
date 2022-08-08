@@ -18,6 +18,7 @@ class Page extends CI_Controller {
 
 	public function docs()
 	{
+		redirect(base_url('page/maintenace'));      
 		$this->load->view('header');
 		$this->load->view('docs');
 		$this->load->view('footer');
@@ -49,5 +50,10 @@ class Page extends CI_Controller {
 	public function error()
 	{
 		$this->load->view('errors/error404');
+	}
+
+	public function maintenace()
+	{
+		$this->load->view('errors/maintenance');
 	}
 }

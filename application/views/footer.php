@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <p>2022 © Copyright Angkatan 2020</p>
+          <p>2022 © Direktori Mahasiswa IT UNIMAL 2020</p>
         </div>
       </div>
     </div>
@@ -33,14 +33,14 @@
                           <label>Username<span class="text-danger">*</span></label>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                              <input type="text" class="form-control" name="email" placeholder="Enter Username" required>
+                              <input type="email" class="form-control" name="email" placeholder="Enter Username" required>
                           </div>
                       </div>
 
                       <div class="col-12">
                           <div class="d-flex justify-content-between">
                             <label>Password<span class="text-danger">*</span></label>
-                            <a href="#" class="text-end text-primary">Lupa Password?</a>
+                            <a href="<?= base_url('auth/reset') ?>" class="text-end text-primary">Lupa Password?</a>
                           </div>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
@@ -59,7 +59,7 @@
                         <button type="submit" class="btn btn-primary button-slave mx-3  rounded"> Log In</button>
                       </div>
                       <div class="col-sm-12 text-center">
-                          Belum Memiliki Akun?<a href="#" class="text-primary">Daftar</a>
+                          Belum Memiliki Akun?<a href="<?= base_url('auth/daftar') ?>" class="text-primary">Daftar</a>
                       </div>
                     </form>
                   </div>
@@ -120,13 +120,14 @@
   <script>
     var monkeyList = new List('test-list', {
       valueNames: ['name'],
-      //  page: 10,
-      //  pagination: false
+        // page: 10,
+        // pagination: false
     });
 
     var myTooltipEl = document.getElementById('myTooltip')
     var tooltip = new bootstrap.Tooltip(myTooltipEl)
     tooltip.show()
+
   </script>
 
 </body>

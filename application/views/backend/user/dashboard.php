@@ -11,7 +11,7 @@
                       <div class="alert alert-danger alert-dismissible" role="alert">
                         <div class="me-auto fw-semibold pb-2"><i class="bx bx-error pb-1"></i> Perhatian !</div>
                         Akun kamu dalam status pending, data belum dapat ditampilkan pada direktori mahasiswa. <br> 
-                        Silahkan menghubungi ketua angkatan kamu untuk dapat diverivikasi.
+                        Silahkan menghubungi ketua angkatan kamu untuk dapat diverifikasi.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                       </div>
                     </div>

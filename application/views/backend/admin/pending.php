@@ -40,7 +40,7 @@
                                 </td>
                                 <td><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></td>
                                 <td>
-                                  <a href="<?= base_url('admin/mhs_detail/'.htmlentities($data->nama, ENT_QUOTES, 'UTF-8')) ?>" class="btn btn-primary btn-icon">
+                                  <a href="<?= base_url('admin/mhs_detail/'.htmlentities($data->nim, ENT_QUOTES, 'UTF-8')) ?>" class="btn btn-primary btn-icon">
                                     <span class="tf-icons bx bx-info-circle"></span>
                                   </a>
                                   <a href="<?= base_url('admin/aktifkan/'.$data->id.'/mhs_pending') ?>" class="btn btn-success">

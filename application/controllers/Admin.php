@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('Model_Page');
+    $this->config->load('mail');
     $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
     $cek = $q->row_array();
     if($this->session->userdata('status')!= "login"){
@@ -336,6 +337,7 @@ class Admin extends CI_Controller {
     $this->db->set('status', 1);
     $this->db->where('id', $id);
     $this->db->update('mahasiswa');
+    $this->_sendEmail($id, 'acc');
     $this->session->set_flashdata('msg', '
     <div class="position-fixed" style="z-index: 9999999">
       <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -376,5 +378,105 @@ class Admin extends CI_Controller {
     ');
     redirect(base_url('admin/'.$url)); 
 	}
+
+  private function _sendEmail($id, $type)
+  {
+      $user = $this->db->get_where('mahasiswa', ['id' => $id])->row();
+      $this->load->library('email');
+      $config = $this->config->item('mail');
+      $this->email->initialize($config);
+      $this->email->set_newline("\r\n");
+      $this->email->from('himatif@unimal.ac.id', 'Direktori Mahasiswa IT 2020');
+      $this->email->to($user->email);
+      if ($type == 'acc') {
+          $this->email->subject('Notifikasi');
+          $this->email->message('
+          <div style="width:100%;padding:0;Margin:0">
+            <div style="background-color:#eeeeee; text-align: center !important;">
+              <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top">
+                <tbody><tr style="border-collapse:collapse">
+                  <td valign="top" style="padding:0;Margin:0">
+                  <table class="m_-7910424275763807554es-content" cellspacing="0" cellpadding="0" align="center" style="border-collapse:collapse;border-spacing:0px;table-layout:fixed!important;width:100%">
+                    <tbody><tr style="border-collapse:collapse"></tr>
+                    <tr style="border-collapse:collapse">
+                      <td align="center" style="padding:0;Margin:0">
+                      <table style="border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px" cellspacing="0" cellpadding="0" align="center">
+                        <tbody><tr style="border-collapse:collapse">
+                          <td align="left" style="Margin:0;padding-left:10px;padding-right:10px;padding-top:15px;padding-bottom:15px">
+                          </td>
+                    </tr>
+                  </tbody></table>
+                  <table class="m_-7910424275763807554es-content" cellspacing="0" cellpadding="0" align="center" style="border-collapse:collapse;border-spacing:0px;table-layout:fixed!important;width:100%">
+                    <tbody><tr style="border-collapse:collapse">
+                      <td align="center" style="padding:0;Margin:0">
+                      <table cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px">
+                        <tbody><tr style="border-collapse:collapse">
+                          <td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:35px;padding-right:35px">
+                          <table cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;border-spacing:0px">
+                            <tbody><tr style="border-collapse:collapse">
+                              <td align="center" valign="top" style="padding:0;Margin:0;width:530px">
+                              <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="border-collapse:collapse;border-spacing:0px">
+                                <tbody><tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0"><p style="Margin:0;font-size:30px;line-height:45px;color:#333333"><strong>
+                                  <br> CONGRATULATION !! </strong></p></td>
+                                </tr>
+                              </tbody></table></td>
+                            </tr>
+                          </tbody></table></td>
+                        </tr>
+                        <tr style="border-collapse:collapse">
+                          <td align="left" style="padding:0;Margin:0;padding-left:35px;padding-right:35px;padding-top:40px">
+                          <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-spacing:0px">
+                            <tbody><tr style="border-collapse:collapse">
+                              <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
+                              <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="border-collapse:collapse;border-spacing:0px">
+                                <tbody><tr style="border-collapse:collapse">
+                                  <td class="m_-7910424275763807554es-m-txt-l" align="left" style="padding:0;Margin:0;padding-top:15px"><h3 style="Margin:0;line-height:22px;font-size:18px;font-style:normal;font-weight:bold;color:#333333!important;text-decoration: none !important;">Halo, '. $user->nama .' !!</h3></td>
+                                </tr>
+                                <tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0;padding-bottom:10px;padding-top:15px"><p style="Margin:0;font-size:16px;line-height:24px;color:#333333">
+                                    Akun direktori mahasiswa kamu telah divalidasi oleh ketua angkatan. <br><span style="color: #71dd37 !important;">Status akun sudah aktif, data kamu bakal ditampilkan pada halaman utama!</span> <br></p> 
+                                  </td>
+                                </tr>
+                              </tbody></table></td>
+                            </tr>
+                          </tbody></table></td>
+                        </tr>
+                      </tbody></table></td>
+                    </tr>
+                  </tbody></table>
+                  <table class="m_-7910424275763807554es-content" cellspacing="0" cellpadding="0" align="center" style="border-collapse:collapse;border-spacing:0px;table-layout:fixed!important;width:100%">
+                    <tbody><tr style="border-collapse:collapse">
+                      <td align="center" style="padding:0;Margin:0">
+                      <table cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px">
+                        <tbody><tr style="border-collapse:collapse">
+                          <td align="left" style="padding:0;Margin:0;padding-top:15px;padding-left:35px;padding-right:35px">
+                          <table width="100%" cellspacing="0" cellpadding="0" style="border-collapse:collapse;border-spacing:0px">
+                            <tbody><tr style="border-collapse:collapse">
+                              <td valign="top" align="center" style="padding:0;Margin:0;width:530px">
+                              <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="border-collapse:collapse;border-spacing:0px">
+                                <tbody><tr style="border-collapse:collapse">
+                                  <td align="left" style="padding:0;Margin:0"><p style="Margin:0;font-size:15px;line-height:23px;color:#333333"><strong><span style="text-align:center">
+                                  <br> -Direktori Mahasiswa IT 2020</span></strong></p><p style="Margin:0;font-size:15px;line-height:23px;color:#333333"><br></p><p style="Margin:0;font-size:15px;line-height:23px;color:#333333"></p><p style="Margin:0;font-size:15px;line-height:23px;color:#333333"><br></p></td>
+                                </tr>
+                              </tbody></table></td>
+                            </tr>
+                          </tbody></table></td>
+                        </tr>
+                      </tbody></table></td>
+                    </tr></td>
+                </tr>
+              </tbody></table>
+            </div>
+          </div>
+          ');
+      } 
+      if ($this->email->send()) {
+          return true;
+      } else {
+          echo $this->email->print_debugger();
+          die;
+      }
+  }
 
 }
