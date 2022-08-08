@@ -10,6 +10,7 @@ class Page extends CI_Controller {
 
 	public function index()
 	{
+		$data['title']= 'Home';
 		$data['mhs']= $this->Model_Page->tampil_mhs('mahasiswa')->result();
 		$this->load->view('header', $data);
 		$this->load->view('main');
@@ -18,7 +19,8 @@ class Page extends CI_Controller {
 
 	public function docs()
 	{
-		redirect(base_url('page/maintenace'));      
+		redirect(base_url('page/maintenace'));
+		$data['title']= 'Documentation';
 		$this->load->view('header');
 		$this->load->view('docs');
 		$this->load->view('footer');

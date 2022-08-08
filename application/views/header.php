@@ -4,13 +4,17 @@
   <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="icon" href="<?= base_url('frontend/') ?>assets/images/logo-it.png" type="image/gif" sizes="16x16">
+    <meta name="description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh">
+    <meta property="og:url" content="<?= base_url() ?>" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Direktori Mahasiswa IT 2020 " />
+    <meta property="og:image" content="<?= base_url('frontend/') ?>assets/images/logo-it.png" />
+    <meta property="og:description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
-    <title>DigiMedia - Creative SEO HTML5 Template</title>
+    <title>Dirmahasiswa2020 | <?= $title ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url('frontend/') ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

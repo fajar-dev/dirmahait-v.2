@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  class="light-style layout-menu-fixed"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="assets/"
-  data-template="vertical-menu-template-free"
 >
   <head>
     <meta charset="utf-8" />
@@ -13,13 +8,18 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
+    <link rel="icon" href="<?= base_url('frontend/') ?>assets/images/logo-it.png" type="image/gif" sizes="16x16">
+    <meta name="description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh">
+    <meta property="og:url" content="<?= base_url() ?>" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Direktori Mahasiswa IT 2020 | <?= $title ?>" />
+    <meta property="og:image" content="<?= base_url('frontend/') ?>assets/images/logo-it.png" />
+    <meta property="og:description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh" />
 
     <title>Dirmahasiswa2020 | <?= $title ?></title>
 
     <meta name="description" content="" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url('backend/') ?>assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -16,10 +16,13 @@
 
     <title>Dirmahasiswa | <?= $title ?></title>
 
-    <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url('backend/') ?>assets/img/favicon/favicon.ico" />
+    <link rel="icon" href="<?= base_url('frontend/') ?>assets/images/logo-it.png" type="image/gif" sizes="16x16">
+    <meta name="description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh">
+    <meta property="og:url" content="<?= base_url() ?>" />
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Direktori Mahasiswa IT 2020 | <?= $title ?>" />
+    <meta property="og:image" content="<?= base_url('frontend/') ?>assets/images/logo-it.png" />
+    <meta property="og:description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
