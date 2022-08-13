@@ -41,6 +41,7 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="<?= base_url('backend/') ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="<?= base_url('backend/') ?>assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="<?= base_url('frontend/') ?>assets/css/magnific-popup.css" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
@@ -118,6 +119,12 @@
                   </li>
                 </ul>
               </li>
+            <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/kirim_email')){ echo 'active';} ?>">
+              <a href="<?= site_url('admin/kirim_email') ?>" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-send"></i>
+                <div data-i18n="Analytics">Kirim Email</div>
+              </a>
+            </li>  
             <li class="menu-item <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/admin/pesan')){ echo 'active';} ?>">
               <a href="<?= site_url('admin/pesan') ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-envelope"></i>

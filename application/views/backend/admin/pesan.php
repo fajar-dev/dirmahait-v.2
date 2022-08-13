@@ -36,7 +36,7 @@
                                 <td><?php echo htmlentities($data->hp, ENT_QUOTES, 'UTF-8');?></td>
                                 <td><?php echo htmlentities($data->tujuan, ENT_QUOTES, 'UTF-8');?></td>
                                 <td>
-                                  <a href="<?= base_url('admin/pesan_hapus/'.$data->id) ?>" class="btn btn-danger">
+                                  <a href="<?= base_url('admin/pesan_hapus/'.$data->id) ?>" class="btn btn-danger btn-del">
                                     <span class="tf-icons bx bx-trash"></span>
                                   </a>
                                 </td>

@@ -26,14 +26,16 @@
                             <?php foreach ($hasil as $data) { ?>
                               <tr>
                                 <td>
-                                  <img
-                                  src="<?= base_url('file/').$data->foto ?>"
-                                  alt="user-avatar"
-                                  class="d-block rounded"
-                                  height="70"
-                                  width="70"
-                                  id="uploadedAvatar"
-                                />
+                                  <a class="test-popup-link" href="<?= base_url('file/').$data->foto ?>">
+                                    <img
+                                    src="<?= base_url('file/').$data->foto ?>"
+                                    alt="user-avatar"
+                                    class="d-block rounded"
+                                    height="70"
+                                    width="70"
+                                    id="uploadedAvatar"
+                                    />
+                                  </a>
                                 </td>
                                 <td>
                                   <strong><strong><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></strong>

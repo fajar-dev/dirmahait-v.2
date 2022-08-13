@@ -55,7 +55,7 @@
                                   <a href="#" class="btn btn-warning btn-icon" data-bs-toggle="modal" data-bs-target="#apiedit<?= $data->id ?>">
                                     <span class="tf-icons bx bx-pencil"></span>
                                   </a>
-                                  <a href="<?= base_url('admin/apikey_hapus/'.$data->id) ?>" class="btn btn-danger btn-icon">
+                                  <a href="<?= base_url('admin/apikey_hapus/'.$data->id) ?>" class="btn btn-danger btn-icon btn-del">
                                     <span class="tf-icons bx bx-trash"></span>
                                   </a>
                                 </td>

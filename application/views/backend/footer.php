@@ -38,6 +38,7 @@
 
     <!-- Vendors JS -->
     <script src="<?= base_url('backend/') ?>assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="<?= base_url('frontend/') ?>assets/js/jquery.magnific-popup.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
@@ -49,12 +50,34 @@
     <!-- Page JS -->
     <script src="<?= base_url('backend/') ?>assets/js/dashboards-analytics.js"></script>
     <script src="<?= base_url('backend/') ?>assets/js/pages-account-settings-account.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+      $('.test-popup-link').magnificPopup({
+        type: 'image'
+        // other options
+      });
       $(document).ready(function() {
         $('#summernote').summernote({
           height: 300
         });
       });
+      
+    $('.btn-del').on('click',function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href')
+        Swal.fire({
+            title: 'Hapus Data?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'delete'
+        }).then((result) => {
+            if (result.value) {
+            document.location.href = href;
+            }
+        })
+        })
     </script>
 
                         <!-- Modal -->

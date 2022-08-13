@@ -45,7 +45,7 @@
                                   <button type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $data->id ?>" class="btn btn-icon btn-warning">
                                     <span class="tf-icons bx bx-pencil"></span>
                                   </button>
-                                  <a href="<?= base_url('user/kontak_hapus/'.$data->id) ?>" class="btn btn-icon btn-danger">
+                                  <a href="<?= base_url('user/kontak_hapus/'.$data->id) ?>" class="btn btn-icon btn-danger btn-del">
                                     <span class="tf-icons bx bx-trash"></span>
                                   </a>
                                 </td>

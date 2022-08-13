@@ -11,13 +11,15 @@
                     <div class=" p-lg-4 pt-0">
                     <div class="card-body mb-0 pb-0">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
-                          <img
+                            <a class="test-popup-link" href="<?= base_url('file/').$mhs->foto ?>">
+                            <img
                             src="<?= base_url('file/').$mhs->foto ?>"
                             alt="user-avatar"
                             class="d-block rounded"
                             height="100"
                             id="uploadedAvatar"
                           />
+                            </a>
                           <div class="button-wrapper">
                             <h4 class="fw-bold"><?php echo htmlentities($mhs->nama, ENT_QUOTES, 'UTF-8');?></h4>
                             <p class="mb-0 pt-0"><?php echo htmlentities($mhs->nim, ENT_QUOTES, 'UTF-8');?></p>

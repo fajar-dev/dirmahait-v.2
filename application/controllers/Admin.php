@@ -134,6 +134,19 @@ class Admin extends CI_Controller {
     redirect(base_url('admin/apikey')); 
 	}
 
+
+  public function kirim_email()
+	{
+    $data['title'] = 'Kirim Email';
+    $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
+    $data['user'] = $q->row_array();
+    $data['hasil'] = $this->db->get('outbox')->result();
+    $data['mhs'] = $this->db->get_where('mahasiswa')->result();
+    $this->load->view('backend/header', $data);
+		$this->load->view('backend/admin/kirim_email');
+		$this->load->view('backend/footer');
+	}
+
   public function pesan()
 	{
     $data['title'] = 'Pesan';

@@ -34,7 +34,7 @@
                                 </td>
                                 <td><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></td>
                                 <td>
-                                  <a href="<?= base_url('admin/admin_hapus/'.$data->nim) ?>" class="btn btn-danger">
+                                  <a href="<?= base_url('admin/admin_hapus/'.$data->nim) ?>" class="btn btn-danger btn-del">
                                     <span class="tf-icons bx bx-trash"></span>Cabut Akses
                                   </a>
                                 </td>
