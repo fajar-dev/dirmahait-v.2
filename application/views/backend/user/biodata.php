@@ -188,7 +188,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="hobi" class="form-label">Asal Provinsi</label>
-                            <select class="form-select" id="email" name="provinsi" aria-label="Default select example">
+                            <select class="form-select" id="select2" name="provinsi" style="color: #697a8d !important;" aria-label="Default select example">
                               <?php if(empty($user['provinsi'])) { ?>
                                 <option selected="" disabled>--- Pilih Provinsi --</option>
                                 <?php foreach ($provinsi as $data) { ?>
@@ -205,7 +205,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="hobi" class="form-label">Asal Kab/Kota</label>
-                            <select class="form-select" id="email" name="kabkota" aria-label="Default select example">
+                            <select class="form-select" id="select21" name="kabkota" aria-label="Default select example">
                             <?php if(empty($user['kabkota'])) { ?>
                                 <option selected="" disabled>--- Pilih Kab/Kota --</option>
                                 <?php foreach ($kabkota as $data) { ?>
@@ -213,7 +213,7 @@
                                 <?php } ?>
                               <?php }else{ ?>
                                 <option disabled>--- Pilih Provinsi --</option>
-                                <option selected="" value="<?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?></option>
+                                <option  selected="" value="<?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?></option>
                                 <?php foreach ($kabkota as $data) { ?>
                                   <option value="<?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?></option>
                                 <?php } ?>

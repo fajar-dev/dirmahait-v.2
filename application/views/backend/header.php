@@ -44,6 +44,8 @@
     <link rel="stylesheet" href="<?= base_url('frontend/') ?>assets/css/magnific-popup.css" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="<?= base_url('backend/') ?>css/select2-bootstrap-5-theme.min.css" />
 
     <!-- Recapthca -->
     <script src='https://www.google.com/recaptcha/api.js'></script>

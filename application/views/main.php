@@ -31,7 +31,6 @@
       </div>
     </div>
   
-  
     <div id="services" class="services section">
       <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
           <div class="row justify-content-center list">
@@ -48,6 +47,13 @@
                       </div>
                       <div class="down-content p-3">
                           <div class="row align-items-center">
+                            <?php if($data->status_mhs == 1){?>
+                              <small class="text-success"><span class="badge bg-primary text-white fw-light mb-2">Aktif</span></small>
+                            <?php }elseif($data->status_mhs == 2){?>
+                              <small class="text-success"><span class="badge bg-danger text-white fw-light mb-2">Tidak Aktif</span></small>
+                            <?php }elseif($data->status_mhs == 3){?>
+                              <small class="text-success"><span class="badge bg-success text-white fw-light mb-2">Lulus</span></small>
+                            <?php }?>
                             <div class="col-10">
                               <h4 class="name"><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></h4>
                               <span class="name"><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></span>
@@ -120,6 +126,16 @@
                                         <td>Agama </td>
                                         <td>:</td>
                                         <td><?php echo htmlentities($data->agama, ENT_QUOTES, 'UTF-8');?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Provinsi Asal </td>
+                                        <td>:</td>
+                                        <td><?php echo htmlentities($data->provinsi, ENT_QUOTES, 'UTF-8');?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kab/Kota Asal </td>
+                                        <td>:</td>
+                                        <td><?php echo htmlentities($data->kabkota, ENT_QUOTES, 'UTF-8');?></td>
                                     </tr>
                                     <tr>
                                         <td>Alamat Asal </td>

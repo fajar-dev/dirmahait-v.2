@@ -43,6 +43,7 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- Main JS -->
     <script src="<?= base_url('backend/') ?>assets/js/main.js"></script>
@@ -161,6 +162,14 @@
             }
         })
         })
+    $( '#select2' ).select2( {
+        theme: 'bootstrap-5',
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style'
+    } );
+    $( '#select21' ).select2( {
+        theme: 'bootstrap-5',
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style'
+    } );
     </script>
 
                         <!-- Modal -->

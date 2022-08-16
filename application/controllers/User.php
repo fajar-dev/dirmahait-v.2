@@ -56,9 +56,9 @@ class User extends CI_Controller {
 		$data['aktif'] = $this->db->get_where('mahasiswa', array('status'=>1))->num_rows();
 		$data['pending'] = $this->db->get_where('mahasiswa', array('status'=>0))->num_rows();
 		$data['suspend'] = $this->db->get_where('mahasiswa', array('status'=>2))->num_rows();
-    $chart= $this->db->select('provinsi, COUNT(provinsi) AS hasil FROM mahasiswa GROUP BY provinsi')->get();
+    $chart= $this->db->select('provinsi, COUNT(provinsi) AS hasil FROM mahasiswa WHERE provinsi IS NOT NULL GROUP BY provinsi')->get();
     $data['provinsi'] = $chart->result();
-		$chart= $this->db->select('kabkota, COUNT(kabkota) AS hasil FROM mahasiswa GROUP BY kabkota')->get();
+		$chart= $this->db->select('kabkota, COUNT(kabkota) AS hasil FROM mahasiswa WHERE kabkota IS NOT NULL GROUP BY kabkota')->get();
     $data['kabkota'] = $chart->result();
 		$data['laki'] = $this->db->get_where('mahasiswa', array('kelamin'=>'laki-laki'))->num_rows();
 		$data['perempuan'] = $this->db->get_where('mahasiswa', array('kelamin'=>'perempuan'))->num_rows();
