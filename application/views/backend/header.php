@@ -45,6 +45,9 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
 
+    <!-- Recapthca -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <!-- Page CSS -->
 
     <!-- Helpers -->

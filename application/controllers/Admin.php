@@ -147,6 +147,68 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/footer');
 	}
 
+  public function kirim_email_add()
+	{
+    $email = $this->input->post('email');
+    $subjek  = $this->input->post('subjek');
+    $isi = $this->input->post('isi');
+        $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+        $userIp=$this->input->ip_address();
+        $secret = $this->config->item('google_secret');
+        $url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
+
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, $url); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        $output = curl_exec($ch); 
+        curl_close($ch);      
+        
+        $status= json_decode($output, true);
+
+        if ($status['success']) {
+          $data = array(
+            'email' => $email,
+            'subjek' => $subjek,
+            'isi' => $isi,
+            'user_log' => $this->session->userdata('nim'),
+          );
+          $this->db->insert('outbox' ,$data);
+          $this->session->set_flashdata('msg', '
+          <div class="position-fixed" style="z-index: 9999999">
+            <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Notifikasi</div>
+                <small>Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Email Berhasil Terkirim
+              </div>
+            </div>
+          </div>
+          ');
+          redirect(base_url('admin/kirim_email')); 
+        }else{
+          $this->session->set_flashdata('msg', '
+          <div class="position-fixed" style="z-index: 9999999">
+            <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-danger top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Notifikasi</div>
+                <small>Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+              Sorry Google Recaptcha Unsuccessful!!
+              </div>
+            </div>
+          </div>
+          ');
+          redirect(base_url('admin/kirim_email')); 
+        }
+  }
+
   public function pesan()
 	{
     $data['title'] = 'Pesan';

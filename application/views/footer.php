@@ -30,17 +30,17 @@
                     <h5 class="text-muted">Direktori Mahasiswa Teknik Informatika Universitas Malikussaleh Angkatan 2020</h5>
                     <form action="<?= base_url('auth/login_proses') ?>" method="POST" class="row g-4 pt-4">
                       <div class="col-12">
-                          <label>Username<span class="text-danger">*</span></label>
+                          <label>Email<span class="text-danger">*</span></label>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                              <input type="email" class="form-control" name="email" placeholder="Enter Username" required>
+                              <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
                           </div>
                       </div>
 
                       <div class="col-12">
                           <div class="d-flex justify-content-between">
                             <label>Password<span class="text-danger">*</span></label>
-                            <a href="<?= base_url('auth/reset') ?>" class="text-end text-primary">Lupa Password?</a>
+                            <a href="<?= base_url('auth/reset') ?>" class="text-end text-primary"><small>Lupa Password?</small></a>
                           </div>
                           <div class="input-group">
                               <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
@@ -53,6 +53,10 @@
                               <input class="form-check-input" type="checkbox" id="inlineFormCheck">
                               <label class="form-check-label" for="inlineFormCheck">Remember me</label>
                           </div>
+                      </div>
+
+                      <div class="col-sm-12">
+                        <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key') ?>"></div> 
                       </div>
 
                       <div class="d-grid gap-2 ">

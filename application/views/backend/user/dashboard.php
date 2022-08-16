@@ -100,7 +100,7 @@
               <?php
                 if( $user['level'] == 1 ) {
               ?>
-              <div class="row">
+              <div class="row mb-4">
                 <div class="col-lg-8">
                   <div class="row">
                     <div class="col-lg-3 col-6 mb-4">
@@ -155,6 +155,26 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5 class="card-title m-0 me-2">Statistik Jenis Kelamin</h5>
+                        </div>
+                        <div class="card-footer">
+                          <div id="jk"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 mb-4">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5 class="card-title m-0 me-2">Statistik Agama</h5>
+                        </div>
+                        <div class="card-footer">
+                          <div id="agama"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -165,7 +185,7 @@
                     <div class="card-body">
                       <ul class="p-0 m-0">
                       <?php foreach ($log as $data) { ?>
-                        <li class="d-flex mb-4 pb-1">
+                        <li class="d-flex mb-3">
                           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                             <div class="me-2">
                               <h6 class="mb-0"><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></h6>
@@ -178,6 +198,28 @@
                         </li>
                       <?php } ?>  
                       </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title m-0 me-2">Statistik Provinsi</h5>
+                    </div>
+                    <div class="card-body">
+                      <div id="provinsi"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title m-0 me-2">Statistik Kab/Kota</h5>
+                    </div>
+                    <div class="card-body">
+                      <div id="kabkota"></div>
                     </div>
                   </div>
                 </div>

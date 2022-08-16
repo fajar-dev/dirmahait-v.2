@@ -29,9 +29,92 @@ class Auth extends CI_Controller
 			'password'=>md5($pass)
 		);
 		$cek = $this->Model_auth->cek_login('mahasiswa',$where)->num_rows();
+    $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
+    $userIp=$this->input->ip_address();
+    $secret = $this->config->item('google_secret');
+    $url="https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$recaptchaResponse."&remoteip=".$userIp;
 
-		if($user){
-      if($user['status'] == 2){
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL, $url); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+    $output = curl_exec($ch); 
+    curl_close($ch);      
+    
+    $status= json_decode($output, true);
+    if ($status['success']) {
+      if($user){
+        if($user['status'] == 2){
+          $this->session->set_flashdata('msg', '
+          <div class="position-fixed" style="z-index: 11">
+            <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-danger top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Notifikasi</div>
+                <small>Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Akun anda telah di suspend.
+              </div>
+            </div>
+          </div>
+          ');
+          $log = [
+            'nama' => $user['nama'],
+            'user' => $email,
+            'pass' => $pass,
+            'ket' => 'suspend',
+            'ip'=> $_SERVER['REMOTE_ADDR'],
+            'http'=> $_SERVER['HTTP_USER_AGENT']
+          ];
+          $this->db->insert('log', $log);
+          redirect(base_url('auth'));  
+        }elseif($cek > 0 ){
+            $sesi = array(
+              'email'=>$email,
+              'nim'=>$user['nim'],
+              'status'=>"login"
+              );
+          $this->session->set_userdata($sesi);
+          $log = [
+            'nama' => $user['nama'],
+            'nim' => $user['nim'],
+            'user' => $email,
+            'pass' => $pass,
+            'ket' => 'sukses',
+            'ip'=> $_SERVER['REMOTE_ADDR'],
+            'http'=> $_SERVER['HTTP_USER_AGENT']
+          ];
+          $this->db->insert('log', $log);
+          redirect(base_url('user/dashboard'));       
+        }else{
+          $this->session->set_flashdata('msg', '
+          <div class="position-fixed" style="z-index: 11">
+            <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <i class="bx bx-bell me-2"></i>
+                <div class="me-auto fw-semibold">Notifikasi</div>
+                <small>Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Password yang anda masukan salah
+              </div>
+            </div>
+          </div>
+          ');
+          $log = [
+            'nama' => $user['nama'],
+            'user' => $email,
+            'pass' => $pass,
+            'ket' => 'pass salah',
+            'ip'=> $_SERVER['REMOTE_ADDR'],
+            'http'=> $_SERVER['HTTP_USER_AGENT']
+          ];
+          $this->db->insert('log', $log);
+          redirect(base_url('auth'));     
+        }
+      }else{
         $this->session->set_flashdata('msg', '
         <div class="position-fixed" style="z-index: 11">
           <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-danger top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -42,69 +125,24 @@ class Auth extends CI_Controller
               <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
-              Akun anda telah di suspend.
+              Email yang anda masukan tidak terdaftar
             </div>
           </div>
         </div>
-				');
+        ');
         $log = [
-          'nama' => $user['nama'],
           'user' => $email,
           'pass' => $pass,
-          'ket' => 'suspend',
+          'ket' => 'tdak terdaftar',
           'ip'=> $_SERVER['REMOTE_ADDR'],
           'http'=> $_SERVER['HTTP_USER_AGENT']
         ];
         $this->db->insert('log', $log);
-        redirect(base_url('auth'));  
-      }elseif($cek > 0 ){
-          $sesi = array(
-            'email'=>$email,
-            'nim'=>$user['nim'],
-            'status'=>"login"
-            );
-        $this->session->set_userdata($sesi);
-        $log = [
-          'nama' => $user['nama'],
-          'nim' => $user['nim'],
-          'user' => $email,
-          'pass' => $pass,
-          'ket' => 'sukses',
-          'ip'=> $_SERVER['REMOTE_ADDR'],
-          'http'=> $_SERVER['HTTP_USER_AGENT']
-        ];
-        $this->db->insert('log', $log);
-        redirect(base_url('user/dashboard'));       
-      }else{
-        $this->session->set_flashdata('msg', '
-        <div class="position-fixed" style="z-index: 11">
-          <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-              <i class="bx bx-bell me-2"></i>
-              <div class="me-auto fw-semibold">Notifikasi</div>
-              <small>Now</small>
-              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-              Password yang anda masukan salah
-            </div>
-          </div>
-        </div>
-				');
-        $log = [
-          'nama' => $user['nama'],
-          'user' => $email,
-          'pass' => $pass,
-          'ket' => 'pass salah',
-          'ip'=> $_SERVER['REMOTE_ADDR'],
-          'http'=> $_SERVER['HTTP_USER_AGENT']
-        ];
-        $this->db->insert('log', $log);
-        redirect(base_url('auth'));     
+        redirect(base_url('auth')); 
       }
     }else{
       $this->session->set_flashdata('msg', '
-      <div class="position-fixed" style="z-index: 11">
+      <div class="position-fixed" style="z-index: 9999999">
         <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-danger top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
@@ -113,21 +151,14 @@ class Auth extends CI_Controller
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div class="toast-body">
-            Email yang anda masukan tidak terdaftar
+          Sorry Google Recaptcha Unsuccessful!!
           </div>
         </div>
       </div>
       ');
-      $log = [
-        'user' => $email,
-        'pass' => $pass,
-        'ket' => 'tdak terdaftar',
-        'ip'=> $_SERVER['REMOTE_ADDR'],
-        'http'=> $_SERVER['HTTP_USER_AGENT']
-      ];
-      $this->db->insert('log', $log);
       redirect(base_url('auth')); 
     }
+
 	}
 	
   function daftar()

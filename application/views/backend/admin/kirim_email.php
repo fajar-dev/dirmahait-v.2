@@ -22,7 +22,7 @@
                       <div class="tab-pane fade active show" id="navs-justified-home" role="tabpanel">
                       <h5 class="py-2">Kirim ke Mahasiswa</h5>
                         <div class="row">
-                          <form action="" method="POST">
+                          <form action="<?= base_url('admin/kirim_email_add') ?>" method="POST">
                           <div class="mb-3 col-md-12">
                             <label for="email" class="form-label">User</label>
                             <select class="form-select" id="email" name="email" aria-label="Default select example">
@@ -38,7 +38,7 @@
                               type="text"
                               class="form-control"
                               id="Subject"
-                              name="subject"
+                              name="subjek"
                               placeholder="Subject"
                             />
                           </div>
@@ -46,8 +46,12 @@
                             <label for="quotes" class="form-label">Isi</label>
                             <textarea class="form-control" id="quotes" name="isi" rows="3"></textarea>
                           </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key') ?>"></div> 
+                          </div>
                           <div class="col-md-12">
-                            <button class="btn btn-primary" >Kirim</button>
+                            <button type="submit" class="btn btn-primary" >Kirim</button>
+                            <button type="reset" class="btn btn-warning" >Reset</button>
                           </div>
                           </form>
                         </div>
@@ -55,7 +59,7 @@
                       <div class="tab-pane fade" id="navs-justified-profile" role="tabpanel">
                       <h5 class="py-2">Kirim ke Tamu</h5>
                         <div class="row">
-                          <form action="" method="POST">
+                          <form action="<?= base_url('admin/kirim_email_add') ?>" method="POST">
                           <div class="mb-3 col-md-12">
                             <label for="email" class="form-label">Email</label>
                             <input
@@ -72,7 +76,7 @@
                               type="text"
                               class="form-control"
                               id="Subject"
-                              name="subject"
+                              name="subjek"
                               placeholder="Subject"
                             />
                           </div>
@@ -80,8 +84,12 @@
                             <label for="quotes" class="form-label">Isi</label>
                             <textarea class="form-control" id="quotes" name="isi" rows="3"></textarea>
                           </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key') ?>"></div> 
+                          </div>
                           <div class="col-md-12">
                             <button type="submit" class="btn btn-primary" >Kirim</button>
+                            <button type="reset" class="btn btn-warning" >Reset</button>
                           </div>
                           </form>
                         </div>

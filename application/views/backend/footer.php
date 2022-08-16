@@ -51,6 +51,89 @@
     <script src="<?= base_url('backend/') ?>assets/js/dashboards-analytics.js"></script>
     <script src="<?= base_url('backend/') ?>assets/js/pages-account-settings-account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <?php if(($_SERVER['PHP_SELF']) == ($_SERVER['SCRIPT_NAME'].'/user/dashboard') AND ( $user['level'] == 1)){ ?>
+    <script>
+      var options = {
+        chart: {
+          type: 'bar'
+        },
+        series: [{
+          name: 'sales',
+          data: [<?php foreach($provinsi as $data){echo '"'.$data->hasil.'" ,';}?>]
+        }],
+        xaxis: {
+          categories: [<?php foreach($provinsi as $data){echo '"'.$data->provinsi.'" ,';}?>]
+        }
+      }
+
+      var chart = new ApexCharts(document.querySelector("#provinsi"), options);
+
+      chart.render();
+    </script>
+        <script>
+      var options = {
+        chart: {
+          type: 'bar'
+        },
+        series: [{
+          name: 'sales',
+          data: [<?php foreach($kabkota as $data){echo '"'.$data->hasil.'" ,';}?>]
+        }],
+        xaxis: {
+          categories: [<?php foreach($kabkota as $data){echo '"'.$data->kabkota.'" ,';}?>]
+        }
+      }
+      var chart = new ApexCharts(document.querySelector("#kabkota"), options);
+      chart.render();
+    </script>
+    <script>
+        var options = {
+          series: [<?= $laki ?>, <?= $perempuan ?>],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Laki-Laki', 'Perempuan'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+        var chart = new ApexCharts(document.querySelector("#jk"), options);
+        chart.render();
+    </script>
+        <script>
+        var options = {
+          series: [<?= $islam ?>, <?= $kristen ?>, <?= $katolik ?>, <?= $hindu ?>, <?= $budha ?>],
+          chart: {
+          width: 410,
+          type: 'pie',
+        },
+        labels: ['Islam', 'Kristen Protestan', 'Katolik', 'Hindu', 'Budha'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+        var chart = new ApexCharts(document.querySelector("#agama"), options);
+        chart.render();
+    </script>
+    <?php } ?>
     <script>
       $('.test-popup-link').magnificPopup({
         type: 'image'

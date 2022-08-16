@@ -50,13 +50,24 @@ class User extends CI_Controller {
     $data['salam'] = $salam.' Have a nice day';
     $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
     $data['user'] = $q->row_array();
-		$data['log'] = $this->db->order_by('date', 'DESC')->get_where('log', array('ket'=>'sukses'), 5)->result();
+		$data['log'] = $this->db->order_by('date', 'DESC')->get_where('log', array('ket'=>'sukses'), 8)->result();
 		$data['set'] = $this->db->get('setting')->row();
 		$data['admin'] = $this->db->get('admin')->num_rows();
 		$data['aktif'] = $this->db->get_where('mahasiswa', array('status'=>1))->num_rows();
 		$data['pending'] = $this->db->get_where('mahasiswa', array('status'=>0))->num_rows();
 		$data['suspend'] = $this->db->get_where('mahasiswa', array('status'=>2))->num_rows();
-		// print_r($data);die;
+    $chart= $this->db->select('provinsi, COUNT(provinsi) AS hasil FROM mahasiswa GROUP BY provinsi')->get();
+    $data['provinsi'] = $chart->result();
+		$chart= $this->db->select('kabkota, COUNT(kabkota) AS hasil FROM mahasiswa GROUP BY kabkota')->get();
+    $data['kabkota'] = $chart->result();
+		$data['laki'] = $this->db->get_where('mahasiswa', array('kelamin'=>'laki-laki'))->num_rows();
+		$data['perempuan'] = $this->db->get_where('mahasiswa', array('kelamin'=>'perempuan'))->num_rows();
+		$data['islam'] = $this->db->get_where('mahasiswa', array('agama'=>'islam'))->num_rows();
+		$data['kristen'] = $this->db->get_where('mahasiswa', array('agama'=>'kristen'))->num_rows();
+		$data['katolik'] = $this->db->get_where('mahasiswa', array('agama'=>'katolik'))->num_rows();
+		$data['hindu'] = $this->db->get_where('mahasiswa', array('agama'=>'hindu'))->num_rows();
+		$data['budha'] = $this->db->get_where('mahasiswa', array('agama'=>'budha'))->num_rows();
+		//print_r($a);die;
     $this->load->view('backend/header', $data);
 		$this->load->view('backend/user/dashboard');
 		$this->load->view('backend/footer');
@@ -68,6 +79,8 @@ class User extends CI_Controller {
     $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
     $data['user'] = $q->row_array();
 		$data['kontak'] = $this->db->get_where('kontak', array('nim'=> $this->session->userdata('nim')))->result();
+		$data['provinsi'] = $this->db->get('provinsi')->result();
+		$data['kabkota'] = $this->db->get('kabkota')->result();
     $this->load->view('backend/header', $data);
 		$this->load->view('backend/user/biodata');
 		$this->load->view('backend/footer');
@@ -82,6 +95,8 @@ class User extends CI_Controller {
 					'tgl_lahir' => $this->input->post('tgl_lahir'),
 					'hobi' => $this->input->post('hobi'),
 					'agama' => $this->input->post('agama'),
+					'provinsi' => $this->input->post('provinsi'),
+					'kabkota' => $this->input->post('kabkota'),
 					'alamat_asal' => $this->input->post('asal'),
 					'alamat_kost' => $this->input->post('kost'),
 					'asal_sekolah' => $this->input->post('sekolah'),
@@ -128,6 +143,8 @@ class User extends CI_Controller {
 									'tgl_lahir' => $this->input->post('tgl_lahir'),
 									'hobi' => $this->input->post('hobi'),
 									'agama' => $this->input->post('agama'),
+									'provinsi' => $this->input->post('provinsi'),
+									'kabkota' => $this->input->post('kabkota'),
 									'alamat_asal' => $this->input->post('asal'),
 									'alamat_kost' => $this->input->post('kost'),
 									'asal_sekolah' => $this->input->post('sekolah'),

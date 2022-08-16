@@ -61,10 +61,12 @@
                   </div>
                 </div>
                 <div class="mb-3">
+                  <div class="g-recaptcha" data-sitekey="<?php echo $this->config->item('google_key') ?>"></div> 
+                </div>
+                <div class="mb-3">
                   <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
               </form>
-
               <p class="text-center">
                 <span>Belum Memilliki akun ?</span>
                 <a href="<?= base_url('auth/daftar') ?>">

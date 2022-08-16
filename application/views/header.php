@@ -25,6 +25,9 @@
     <link rel="stylesheet" href="<?= base_url('frontend/') ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url('frontend/') ?>assets/css/animated.css">
     <link rel="stylesheet" href="<?= base_url('frontend/') ?>assets/css/owl.css">
+
+    <!-- Recapthca -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 <!--
 
 TemplateMo 568 DigiMedia
