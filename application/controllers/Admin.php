@@ -149,6 +149,8 @@ class Admin extends CI_Controller {
 
   public function kirim_email_add()
 	{
+    $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
+    $user = $q->row_array();
     $email = $this->input->post('email');
     $subjek  = $this->input->post('subjek');
     $isi = $this->input->post('isi');
@@ -166,29 +168,49 @@ class Admin extends CI_Controller {
         $status= json_decode($output, true);
 
         if ($status['success']) {
-          $data = array(
-            'email' => $email,
-            'subjek' => $subjek,
-            'isi' => $isi,
-            'user_log' => $this->session->userdata('nim'),
-          );
-          $this->db->insert('outbox' ,$data);
-          $this->session->set_flashdata('msg', '
-          <div class="position-fixed" style="z-index: 9999999">
-            <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <i class="bx bx-bell me-2"></i>
-                <div class="me-auto fw-semibold">Notifikasi</div>
-                <small>Now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                Email Berhasil Terkirim
+          $this->load->library('email');
+          $config = $this->config->item('mail');
+          $addreas = $this->config->item('addreas');
+          $this->email->initialize($config);
+          $this->email->set_newline("\r\n");
+          $this->email->from($addreas, 'Direktori Mahasiswa IT 2020');
+          $this->email->to($email);
+          $this->email->subject($subjek);
+              $this->email->message('
+              <p>
+                HI, '.$email.'!<br><br>
+                '.$isi.'<br><br><small style="color: green;">
+                Oleh: '.$user['nama'].'<br>Pesan Ini dikirim melalui broadcast Dirmahasiswa IT UNIMAL 2020</small><br><br>Thanks,<br>-Direktori Mahasiswa IT 2020
+              </p>
+              ');
+          if ($this->email->send()) {
+            $data = array(
+              'email' => $email,
+              'subjek' => $subjek,
+              'isi' => $isi,
+              'user_log' => $this->session->userdata('nim'),
+            );
+            $this->db->insert('outbox' ,$data);
+            $this->session->set_flashdata('msg', '
+            <div class="position-fixed" style="z-index: 9999999">
+              <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                  <i class="bx bx-bell me-2"></i>
+                  <div class="me-auto fw-semibold">Notifikasi</div>
+                  <small>Now</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Email Berhasil Terkirim
+                </div>
               </div>
             </div>
-          </div>
-          ');
-          redirect(base_url('admin/kirim_email')); 
+            ');
+          redirect(base_url('admin/kirim_email'));
+          } else {
+              echo $this->email->print_debugger();
+              die;
+          } 
         }else{
           $this->session->set_flashdata('msg', '
           <div class="position-fixed" style="z-index: 9999999">
@@ -459,9 +481,10 @@ class Admin extends CI_Controller {
       $user = $this->db->get_where('mahasiswa', ['id' => $id])->row();
       $this->load->library('email');
       $config = $this->config->item('mail');
+      $addreas = $this->config->item('addreas');
       $this->email->initialize($config);
       $this->email->set_newline("\r\n");
-      $this->email->from('himatif@unimal.ac.id', 'Direktori Mahasiswa IT 2020');
+      $this->email->from($addreas, 'Direktori Mahasiswa IT 2020');
       $this->email->to($user->email);
       if ($type == 'acc') {
           $this->email->subject('Notifikasi');

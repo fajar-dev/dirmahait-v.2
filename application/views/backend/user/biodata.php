@@ -232,7 +232,7 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="kost" class="form-label">Alamat Asal</label>
+                            <label for="kost" class="form-label">Alamat Kost</label>
                             <input
                               type="text"
                               class="form-control"

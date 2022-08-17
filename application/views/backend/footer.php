@@ -9,7 +9,7 @@
                   © Direktori Mahasiswa IT UNIMAL 2020
                 </div>
                 <div>
-                  <span class="footer-link me-4">V.2.5</span>
+                  <span class="footer-link me-4">V.2.5.12</span>
                 </div>
               </div>
             </footer>

@@ -53,6 +53,16 @@
                                         <td><?php echo htmlentities($mhs->tgl_lahir, ENT_QUOTES, 'UTF-8');?></td>
                                     </tr>
                                     <tr>
+                                        <td>Provinsi Asal </td>
+                                        <td>:</td>
+                                        <td><?php echo htmlentities($mhs->provinsi, ENT_QUOTES, 'UTF-8');?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kab/Kota Asal </td>
+                                        <td>:</td>
+                                        <td><?php echo htmlentities($mhs->kabkota, ENT_QUOTES, 'UTF-8');?></td>
+                                    </tr>
+                                    <tr>
                                         <td>Agama </td>
                                         <td>:</td>
                                         <td><?php echo htmlentities($mhs->agama, ENT_QUOTES, 'UTF-8');?></td>

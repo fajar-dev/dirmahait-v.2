@@ -38,7 +38,7 @@
                                   </a>
                                 </td>
                                 <td>
-                                  <strong><strong><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></strong>
+                                  <strong><strong><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></strong>
                                 </td>
                                 <td><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></td>
                                 <td>

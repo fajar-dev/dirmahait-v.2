@@ -428,9 +428,10 @@ class Auth extends CI_Controller
       $user = $this->db->get_where('mahasiswa', ['email' => $email])->row();
       $this->load->library('email');
       $config = $this->config->item('mail');
+      $addreas = $this->config->item('addreas');
       $this->email->initialize($config);
       $this->email->set_newline("\r\n");
-      $this->email->from('himatif@unimal.ac.id', 'Direktori Mahasiswa IT 2020');
+      $this->email->from($addreas, 'Direktori Mahasiswa IT 2020');
       $this->email->to($email);
       if ($type == 'daftar') {
           $this->email->subject('Notification');
