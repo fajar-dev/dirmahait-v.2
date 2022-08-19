@@ -532,6 +532,11 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = ''; 
+/*
+|--------------------------------------------------------------------------
+| Config Tambahan
+|--------------------------------------------------------------------------
+*/
 $config['composer_autoload'] = 'vendor/autoload.php';
 $config['google_key'] = '6LcxjXYhAAAAAHYLDh_yXvw1y7uHtg29UsnPSDNj';
 $config['google_secret'] = '6LcxjXYhAAAAAIFRsYqx1nbVEQtLIFSShlqK7TIU';

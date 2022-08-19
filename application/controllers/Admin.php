@@ -396,12 +396,12 @@ class Admin extends CI_Controller {
 		$html = $this->load->view('backend/admin/print',$data,true);
 		$mpdf->WriteHTML($html);
 		//$mpdf->Output(); // opens in browser
-		$mpdf->Output('Dirmahasiswa.pdf','D'); // it downloads the file into the user system, with give name
+		$mpdf->Output('DirmahasiswaIT.pdf','D'); // it downloads the file into the user system, with give name
 	}
 
   public function CSV(){ 
     // // file name 
-    $filename = 'Dirmahasiswa.csv'; 
+    $filename = 'DirmahasiswaIT.csv'; 
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$filename"); 
     header("Content-Type: application/csv; ");
@@ -415,7 +415,7 @@ class Admin extends CI_Controller {
     $usersData = $query->result_array();
     $file = fopen('php://output', 'w');
 
-    $header = array("Nama","nim",); 
+    $header = array("Nama","Nim",); 
     fputcsv($file, $header);
     foreach ($usersData as $key=>$line){ 
         fputcsv($file,$line); 
