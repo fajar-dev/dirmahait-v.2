@@ -44,6 +44,7 @@
                                         id="basic-default-password12"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                                         aria-describedby="basic-default-password2"
+                                        readonly
                                         value="<?php echo htmlentities($data->apikey, ENT_QUOTES, 'UTF-8');?>"
                                       />
                                       <span id="basic-default-password2" class="input-group-text cursor-pointer"
@@ -79,7 +80,7 @@
                                         <div class="row">
                                           <div class="col-12 mb-3">
                                             <label for="nameSmall" class="form-label">Nama PJ</label>
-                                            <input type="text" id="nameSmall" class="form-control" name="pj" value="<?php echo htmlentities($data->pj, ENT_QUOTES, 'UTF-8');?>" required placeholder="Contoh: Ibu" />
+                                            <input type="text" id="nameSmall" class="form-control" name="pj" value="<?php echo htmlentities($data->pj, ENT_QUOTES, 'UTF-8');?>" required placeholder="penanggung Jawab" />
                                           </div>
                                           <div class="col-12 mb-0">
                                             <label class="form-label" for="emailSmall">Nomor HP</label>
@@ -127,7 +128,7 @@
                       <div class="row">
                         <div class="col-12 mb-3">
                           <label for="nameSmall" class="form-label">Nama PJ</label>
-                          <input type="text" id="nameSmall" class="form-control" name="pj" required placeholder="Contoh: Ibu" />
+                          <input type="text" id="nameSmall" class="form-control" name="pj" required placeholder="Penanggung Jawab" />
                         </div>
                         <div class="col-12 mb-0">
                           <label class="form-label" for="emailSmall">Nomor HP</label>

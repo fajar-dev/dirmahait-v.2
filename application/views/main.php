@@ -95,7 +95,7 @@
                       <div class="modal-body p-5 pt-0">
                         <div class="row align-items-center">
                           <div class="col-md-2 col-12 mb-3">
-                            <img src="<?php echo base_url()?>file/<?php echo $data->foto;?>" class="rounded" alt="">
+                            <img src="<?php echo base_url()?>file/<?php echo $data->foto;?>" height="1000" class="rounded" alt="">
                           </div>
                           <div class="col-md-10">
                             <h2 class="fs-5 fw-bold"><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></h2>
@@ -107,7 +107,20 @@
                             <div class="table-responsive">
                               <table class="table fw-normal">
                                 <tbody>
-                                  <tr>
+                                    <tr>
+                                      <td>Status Mahasiswa </td>
+                                      <td>:</td>
+                                      <td>
+                                      <?php if($data->status_mhs == 1){?>
+                                        <small class="text-success"><span class="text-primary">Aktif</span></small>
+                                      <?php }elseif($data->status_mhs == 2){?>
+                                        <small class="text-success"><span class="text-danger">Tidak Aktif</span></small>
+                                      <?php }elseif($data->status_mhs == 3){?>
+                                        <small class="text-success"><span class="text-success">Lulus</span></small>
+                                      <?php }?>
+                                      </td>
+                                    </tr>
+                                    <tr>
                                       <td>Jenis Kelamin </td>
                                       <td>:</td>
                                       <td><?php echo htmlentities($data->kelamin, ENT_QUOTES, 'UTF-8');?></td>
