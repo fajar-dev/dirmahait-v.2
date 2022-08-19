@@ -389,6 +389,16 @@ class Admin extends CI_Controller {
     $this->load->view('backend/admin/print', $data);
 	}
 
+  public function pdf()
+	{
+    $data['hasil'] = $this->db->order_by('nim', 'ASC')->get_where('mahasiswa', array('status'=> 1))->result();
+		$mpdf = new \Mpdf\Mpdf();
+		$html = $this->load->view('backend/admin/print',$data,true);
+		$mpdf->WriteHTML($html);
+		//$mpdf->Output(); // opens in browser
+		$mpdf->Output('Dirmahasiswa.pdf','D'); // it downloads the file into the user system, with give name
+	}
+
   public function mhs_suspend()
 	{
     $data['title'] = 'Suspend';
