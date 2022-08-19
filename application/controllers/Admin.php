@@ -383,6 +383,12 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/footer');
 	}
 
+  public function print()
+	{
+    $data['hasil'] = $this->db->order_by('nim', 'ASC')->get_where('mahasiswa', array('status'=> 1))->result();
+    $this->load->view('backend/admin/print', $data);
+	}
+
   public function mhs_suspend()
 	{
     $data['title'] = 'Suspend';
