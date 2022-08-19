@@ -60,6 +60,14 @@
     <script src="<?= base_url('backend/') ?>assets/js/config.js"></script>
   </head>
 
+  <!--
+  ======================================
+      DEVELOPER: Fajar Rivaldi Chan
+      GITHUB: github.com/fajar-dev
+      SITUS: https://fajar-dev.my.id
+  =======================================
+  -->
+
   <body>
         <!-- Layout wrapper -->
         <div class="layout-wrapper layout-content-navbar">
@@ -68,7 +76,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="<?= base_url() ?>" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <img src="<?= base_url('frontend/') ?>assets/images/logo.png" height="60" alt="">
               </span>
@@ -174,6 +182,11 @@
                 <div data-i18n="Analytics">Logout</div>
               </a>
             </li>
+            <li class="menu-item text-center mt-5">
+              <a href="<?= site_url() ?>" class="btn btn-primary w-75 mx-3">
+                <i class="bx bx-globe"></i> Halaman Utama
+              </a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
@@ -217,7 +230,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="<?= base_url('user/biodata') ?>">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">

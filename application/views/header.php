@@ -4,6 +4,10 @@
   <head>
 
     <meta charset="UTF-8">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <link rel="icon" href="<?= base_url('frontend/') ?>assets/images/logo-it.png" type="image/gif" sizes="16x16">
     <meta name="description" content="Selamat datang di direktori mahasiswa Teknik Informatika angkatan 2020 Universitas Malikussaleh">
     <meta property="og:url" content="<?= base_url() ?>" />
@@ -28,14 +32,15 @@
 
     <!-- Recapthca -->
     <script src='https://www.google.com/recaptcha/api.js'></script>
-<!--
-
-TemplateMo 568 DigiMedia
-
-https://templatemo.com/tm-568-digimedia
-
--->
   </head>
+
+  <!--
+  ======================================
+      DEVELOPER: Fajar Rivaldi Chan
+      GITHUB: github.com/fajar-dev
+      SITUS: fajar-dev.my.id
+  =======================================
+  -->
 
 <body>
 
@@ -59,7 +64,7 @@ https://templatemo.com/tm-568-digimedia
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
+            <a href="<?= base_url() ?>" class="logo">
               <img src="<?= base_url('frontend/') ?>assets/images/logo.png" width="10" alt="">
             </a>
             <!-- ***** Logo End ***** -->

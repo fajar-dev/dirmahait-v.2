@@ -121,6 +121,8 @@
   <script src="<?= base_url('frontend/') ?>assets/js/custom.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>  
   <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script>
     var monkeyList = new List('test-list', {
       valueNames: ['name'],
