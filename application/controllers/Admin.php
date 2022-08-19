@@ -399,6 +399,31 @@ class Admin extends CI_Controller {
 		$mpdf->Output('Dirmahasiswa.pdf','D'); // it downloads the file into the user system, with give name
 	}
 
+  public function CSV(){ 
+    // // file name 
+    $filename = 'Dirmahasiswa.csv'; 
+    header("Content-Description: File Transfer"); 
+    header("Content-Disposition: attachment; filename=$filename"); 
+    header("Content-Type: application/csv; ");
+    
+    // get data 
+    $this->db->select("nama, nim");
+    $this->db->from("mahasiswa");
+    $this->db->where('status', 1);
+    $this->db->order_by("nim", "ASC");
+    $query = $this->db->get();
+    $usersData = $query->result_array();
+    $file = fopen('php://output', 'w');
+
+    $header = array("Nama","nim",); 
+    fputcsv($file, $header);
+    foreach ($usersData as $key=>$line){ 
+        fputcsv($file,$line); 
+    }
+    fclose($file); 
+    exit; 
+}
+
   public function mhs_suspend()
 	{
     $data['title'] = 'Suspend';

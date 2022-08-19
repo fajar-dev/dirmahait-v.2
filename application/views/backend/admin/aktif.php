@@ -10,12 +10,16 @@
                   <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="card-title m-0 me-2">Data Mahsiswa</h5>
                       <div class="dropdown">
-                        <a href="<?= base_url('admin/pdf')?>" class="btn btn-primary rounded-pill">
-                          <i class="bx bx-file"></i> Export to PDF
-                        </a>
                         <a href="<?= base_url('admin/print')?>" class="btn btn-primary rounded-pill">
                           <i class="bx bx-printer"></i> Print
                         </a>
+                        <div class="btn-group" id="dropdown-icon-demo">
+                          <button type="button" class="btn btn-primary dropdown-toggle rounded-pill" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-menu"></i> Export</button>
+                          <ul class="dropdown-menu" style="">
+                            <li><a href="<?= base_url('admin/pdf')?>" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>PDF</a></li>
+                            <li><a href="<?= base_url('admin/csv')?>" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>CSV</a></li>
+                          </ul>
+                        </div>
                       </div>
                       
                     </div>
