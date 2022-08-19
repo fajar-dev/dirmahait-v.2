@@ -10,10 +10,14 @@
                   <div class="card-header d-flex align-items-center justify-content-between">
                       <h5 class="card-title m-0 me-2">Data Mahsiswa</h5>
                       <div class="dropdown">
+                        <a href="<?= base_url('admin/pdf')?>" class="btn btn-primary rounded-pill">
+                          <i class="bx bx-file"></i> Export to PDF
+                        </a>
                         <a href="<?= base_url('admin/print')?>" class="btn btn-primary rounded-pill">
                           <i class="bx bx-printer"></i> Print
                         </a>
                       </div>
+                      
                     </div>
                     <!-- Account -->
                       <div class="card-body">
