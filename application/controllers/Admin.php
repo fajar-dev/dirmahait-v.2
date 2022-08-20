@@ -462,7 +462,7 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/admin/detail');
 		$this->load->view('backend/footer');
 	}
-
+ 
   public function status_mhs()
 	{
     $this->db->set('status_mhs', $this->input->post('status'));
