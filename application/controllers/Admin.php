@@ -396,12 +396,12 @@ class Admin extends CI_Controller {
 		$html = $this->load->view('backend/admin/print',$data,true);
 		$mpdf->WriteHTML($html);
 		//$mpdf->Output(); // opens in browser
-		$mpdf->Output('DirmahasiswaIT.pdf','D'); // it downloads the file into the user system, with give name
+		$mpdf->Output('DirmahasiswaIT20.pdf','D'); // it downloads the file into the user system, with give name
 	}
 
   public function CSV(){ 
     // // file name 
-    $filename = 'DirmahasiswaIT.csv'; 
+    $filename = 'DirmahasiswaIT20.csv'; 
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$filename"); 
     header("Content-Type: application/csv; ");
@@ -426,7 +426,7 @@ class Admin extends CI_Controller {
   }
 
   public function json(){ 
-    $filename = 'DirmahasiswaIT.json'; 
+    $filename = 'DirmahasiswaIT20.json'; 
     header("Content-Description: File Transfer"); 
     header("Content-Disposition: attachment; filename=$filename"); 
     header("Content-Type: application/json; ");
@@ -450,7 +450,7 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/admin/suspend');
 		$this->load->view('backend/footer');
 	}
-    
+
   public function mhs_detail($nim)
 	{
     $data['title'] = 'Detail Mahasiswa';
