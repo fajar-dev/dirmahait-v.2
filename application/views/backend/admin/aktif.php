@@ -18,6 +18,7 @@
                           <ul class="dropdown-menu">
                             <li><a href="<?= base_url('admin/pdf')?>" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>PDF</a></li>
                             <li><a href="<?= base_url('admin/csv')?>" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>CSV</a></li>
+                            <li><a href="<?= base_url('admin/json')?>" class="dropdown-item d-flex align-items-center"><i class="bx bx-chevron-right scaleX-n1-rtl"></i>JSON</a></li>
                           </ul>
                         </div>
                       </div>

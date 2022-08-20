@@ -45,6 +45,7 @@
         <td width="5%">No.</td>
         <td width="45%">Nama</td>
         <td width="15%">Nim</td>
+        <td width="15%">Status</td>
     </tr>
     </thead>
     <tbody>
@@ -57,6 +58,15 @@
       <th><?php echo $no++ ?></th>
       <td><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></td>
       <td  align="center"><?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></td>
+      <td align="center">
+            <?php if($data->status_mhs == 1){?>
+                <small class="text-success"><span style="color: blue;">Aktif</span></small>
+            <?php }elseif($data->status_mhs == 2){?>
+                <small class="text-success"><span style="color: red;">Tidak Aktif</span></small>
+            <?php }elseif($data->status_mhs == 3){?>
+                <small class="text-success"><span style="color: green;">Lulus</span></small>
+            <?php }?>
+        </td>
     </tr>
           <?php
             }
