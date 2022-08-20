@@ -407,7 +407,8 @@ class Admin extends CI_Controller {
     header("Content-Type: application/csv; ");
     
     // get data 
-    $this->db->select("nama, nim");
+    //$this->db->replace( 'status_mhs', '1', 'Aktif');
+    $this->db->select("nama, nim, status_mhs");
     $this->db->from("mahasiswa");
     $this->db->where('status', 1);
     $this->db->order_by("nim", "ASC");
@@ -415,15 +416,30 @@ class Admin extends CI_Controller {
     $usersData = $query->result_array();
     $file = fopen('php://output', 'w');
 
-    $header = array("Nama","Nim",); 
+    $header = array("Nama","Nim", "Status"); 
     fputcsv($file, $header);
     foreach ($usersData as $key=>$line){ 
         fputcsv($file,$line); 
     }
     fclose($file); 
     exit; 
-}
+  }
 
+  public function json(){ 
+    $filename = 'DirmahasiswaIT.json'; 
+    header("Content-Description: File Transfer"); 
+    header("Content-Disposition: attachment; filename=$filename"); 
+    header("Content-Type: application/json; ");
+    //$this->db->replace( 'status_mhs', '1', 'Aktif');
+    $this->db->select("nama, nim, status_mhs");
+    $this->db->from("mahasiswa");
+    $this->db->where('status', 1);
+    $this->db->order_by("nim", "ASC");
+    $query = $this->db->get();
+    $result = json_encode($query->result_array());
+    echo $result;
+  }
+  
   public function mhs_suspend()
 	{
     $data['title'] = 'Suspend';

@@ -50,7 +50,7 @@
               </div>
             </div>
             <!-- / Content -->
-
+            
             <!-- Modal Tambah -->
             <div class="modal fade" id="tambahadmin" tabindex="-1" aria-hidden="true">
               <div class="modal-dialog modal-sm" role="document">

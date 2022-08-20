@@ -260,6 +260,7 @@ class Auth extends CI_Controller
         'email' => $this->input->post('email'),
         'password' => md5(trim($this->input->post('password'))),
         'agree' => 1,
+        'status_mhs' => 1,
         'status' => 0
       );
       $this->db->insert('mahasiswa',$data);
