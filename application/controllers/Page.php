@@ -12,18 +12,18 @@ class Page extends CI_Controller {
 	{
 		$data['title']= 'Home';
 		$data['mhs']= $this->Model_Page->tampil_mhs('mahasiswa')->result();
-		$this->load->view('header', $data);
-		$this->load->view('main');
-		$this->load->view('footer');
+		$this->load->view('frontend/header', $data);
+		$this->load->view('frontend/main');
+		$this->load->view('frontend/footer');
 	}
 
 	public function docs()
 	{
 		redirect(base_url('page/maintenace'));
 		$data['title']= 'Documentation';
-		$this->load->view('header');
-		$this->load->view('docs');
-		$this->load->view('footer');
+		$this->load->view('frontend/header');
+		$this->load->view('frontend/docs');
+		$this->load->view('frontend/footer');
 	}
 
 	public function request(){
