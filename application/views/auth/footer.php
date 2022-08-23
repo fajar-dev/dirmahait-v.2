@@ -59,5 +59,20 @@
         }, 3000);
     </script>
 
+    <script type="text/javascript">
+        window.onload = function () {
+          document.getElementById("pw").onchange = validatePassword;
+          valid = /^[0-9]{1,}$/;
+        }
+
+        function validatePassword(){
+          var pass=document.getElementById("pw").value;
+            if(pass.match(valid))
+              document.getElementById("pw").setCustomValidity("Password Juga Harus berisi minimal 1 huruf");
+            else
+              document.getElementById("pw").setCustomValidity('');
+        }
+    </script> 
+
   </body>
 </html>
