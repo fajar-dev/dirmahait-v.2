@@ -69,7 +69,7 @@
                       <div class="row">
                         <div class="col-12 mb-3">
                           <label for="nameSmall" class="form-label">Nama</label>
-                          <select class="form-select" id="exampleFormControlSelect1" name="user" aria-label="Default select example">
+                          <select class="form-select" id="exampleFormControlSelect1" required name="user" aria-label="Default select example">
                             <option selected="" disabled>--- Pilih User --</option>
                               <?php foreach ($mhs as $data) { ?>
                                 <option value="<?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?>, <?php echo htmlentities($data->nim, ENT_QUOTES, 'UTF-8');?></option>
