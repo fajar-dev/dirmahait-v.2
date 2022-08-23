@@ -214,9 +214,28 @@ class Auth extends CI_Controller
     $email = trim($this->input->post('email'));
     $nama = $this->input->post('nama');
     $nim = trim($this->input->post('nim'));
+    $validasi = substr($nim,6);
     $user = $this->db->get_where('mahasiswa', ['email' => $email])->row_array();
     $ceknim = $this->db->get_where('mahasiswa', ['nim' => $nim])->row_array();
-		if($user){
+    if($ceknim){
+      $this->session->set_flashdata('nama', $nama);
+      $this->session->set_flashdata('msg', '
+      <div class="position-fixed" style="z-index: 11">
+        <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Notifikasi</div>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            NIM yang anda masukan sudah terdaftar, <br>silahkan hubungi ketua angkatan bila ini sebuah kesalahan
+          </div>
+        </div>
+      </div>
+      ');
+      redirect(base_url('auth/daftar')); 
+    }elseif($user){
       $this->session->set_flashdata('nama', $nama);
       $this->session->set_flashdata('nim', $nim);
       $this->session->set_flashdata('msg', '
@@ -235,8 +254,10 @@ class Auth extends CI_Controller
       </div>
       ');
       redirect(base_url('auth/daftar')); 
-    }elseif($ceknim){
+    }elseif($nim == trim($this->input->post('password'))){
       $this->session->set_flashdata('nama', $nama);
+      $this->session->set_flashdata('nim', $nim);
+      $this->session->set_flashdata('email', $email);
       $this->session->set_flashdata('msg', '
       <div class="position-fixed" style="z-index: 11">
         <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -247,7 +268,7 @@ class Auth extends CI_Controller
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div class="toast-body">
-            NIM yang anda masukan sudah terdaftar 
+            MAAF! Password yang anda masukan tidak boleh sama dengan nim
           </div>
         </div>
       </div>

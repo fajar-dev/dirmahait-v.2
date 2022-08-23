@@ -270,7 +270,7 @@ class Admin extends CI_Controller {
     $data['user'] = $q->row_array();
     $q = $this->db->select('*')->from('admin')->join('mahasiswa', 'mahasiswa.nim=admin.nim_mhs', 'left')->get();
     $data['admin'] = $q->result();
-    $data['mhs'] = $this->db->get_where('mahasiswa')->result();
+    $data['mhs'] = $this->db->get('mahasiswa')->result();
     $this->load->view('backend/header', $data);
 		$this->load->view('backend/admin/admin');
 		$this->load->view('backend/footer');
@@ -278,28 +278,48 @@ class Admin extends CI_Controller {
 
   	public function admin_add()
 	{
-    $data = array(
-      'nim_mhs' => $this->input->post('user'),
-      'level' => 1,
-      'user_log' => $this->session->userdata('nim'),
-    );
-    $this->db->insert('admin' ,$data);
-    $this->session->set_flashdata('msg', '
-    <div class="position-fixed" style="z-index: 9999999">
-      <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-          <i class="bx bx-bell me-2"></i>
-          <div class="me-auto fw-semibold">Notifikasi</div>
-          <small>Now</small>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-          Berhasil menambahkan admin
+    $admin = $this->db->get_where('admin', ['nim_mhs' => $this->input->post('user')])->row_array();
+    if($admin){
+      $this->session->set_flashdata('msg', '
+      <div class="position-fixed" style="z-index: 9999999">
+        <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-warning top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Notifikasi</div>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            User tersebut sudah menjadi admin
+          </div>
         </div>
       </div>
-    </div>
-    ');
-    redirect(base_url('admin/admin')); 
+      ');
+      redirect(base_url('admin/admin')); 
+    }else{
+      $data = array(
+        'nim_mhs' => $this->input->post('user'),
+        'level' => 1,
+        'user_log' => $this->session->userdata('nim'),
+      );
+      $this->db->insert('admin' ,$data);
+      $this->session->set_flashdata('msg', '
+      <div class="position-fixed" style="z-index: 9999999">
+        <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <i class="bx bx-bell me-2"></i>
+            <div class="me-auto fw-semibold">Notifikasi</div>
+            <small>Now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Berhasil menambahkan admin
+          </div>
+        </div>
+      </div>
+      ');
+      redirect(base_url('admin/admin')); 
+    }
 	}
 
   public function admin_hapus($id)

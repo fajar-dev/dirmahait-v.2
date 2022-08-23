@@ -38,7 +38,7 @@
                 <div class="mb-3">
                   <label for="username" class="form-label">NIM</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
                     id="nim"
                     name="nim"
@@ -50,14 +50,14 @@
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email" />
+                  <input type="email" class="form-control" id="email" name="email" value="<?= $this->session->flashdata('email'); ?>" required placeholder="Enter your email" />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Password</label>
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
-                      id="password"
+                      id="pw"
                       class="form-control"
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
