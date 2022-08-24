@@ -49,6 +49,10 @@
                                     <span class="tf-icons bx bx-check fw-bold"></span>
                                     Aktifkan
                                   </a>
+                                  <a href="<?= base_url('admin/hapus/'.$data->id.'') ?>" class="btn btn-danger btn-del">
+                                    <span class="tf-icons bx bx-trash fw-bold"></span>
+                                    Hapus
+                                  </a>
                                 </td>
                               </tr>
                               <?php } ?>
