@@ -187,6 +187,9 @@
                 <i class="bx bx-globe"></i> Halaman Utama
               </a>
             </li>
+            <li class="menu-item text-center mt-3">
+            <a href="https://github.com/fajar-dev/dirmahait-v.2"><img src="https://img.shields.io/github/stars/fajar-dev/dirmahait-v.2?style=social" alt=""></a>
+            </li>
           </ul>
         </aside>
         <!-- / Menu -->
