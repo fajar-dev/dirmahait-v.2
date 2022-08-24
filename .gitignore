@@ -3,7 +3,8 @@
 application/config/mail.php
 application/config/config.php
 application/controllers/Auth.php
-file/*
+file/*.jpg
+file/*.png
 
 # IDE Files
 #-------------------------
