@@ -17,6 +17,7 @@
                   <div class="card mb-4">
                     <h5 class="card-header">Biodata ku</h5>
                     <!-- Account -->
+                        <?= $this->session->flashdata('pesan'); ?>
                     <?php echo form_open_multipart('user/biodata_update');?>
                       <div class="card-body">
                         <div class="d-flex align-items-start align-items-sm-center gap-4">

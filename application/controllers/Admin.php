@@ -553,6 +553,28 @@ class Admin extends CI_Controller {
     redirect(base_url('admin/'.$url)); 
 	}
 
+  public function hapus($id)
+	{
+    $this->db->where('id', $id);
+    $this->db->delete('mahasiswa');
+    $this->session->set_flashdata('msg', '
+    <div class="position-fixed" style="z-index: 9999999">
+      <div id="toast" class="bs-toast toast toast-placement-ex m-2 fade bg-success top-0 start-50 translate-middle-x show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <i class="bx bx-bell me-2"></i>
+          <div class="me-auto fw-semibold">Notifikasi</div>
+          <small>Now</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Berhasil Menghapus Akun Mahasiswa
+        </div>
+      </div>
+    </div>
+    ');
+    redirect(base_url('admin/mhs_suspend')); 
+	}
+
   private function _sendEmail($id, $type)
   {
       $user = $this->db->get_where('mahasiswa', ['id' => $id])->row();

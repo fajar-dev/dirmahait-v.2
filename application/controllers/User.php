@@ -130,8 +130,8 @@ class User extends CI_Controller {
 			$config['max_size']            = 10000000;
 			$this->load->library('upload', $config);
 			if ( ! $this->upload->do_upload('foto')){
-				$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Gagal!! pastikan ekstensi gambar berupa gif, jpg atau png.</div>');
-				redirect('page/pencatatan');
+				$this->session->set_flashdata('pesan', '<div class="alert alert-warning" role="alert">Gagal!! pastikan ekstensi gambar berupa gif, jpg atau png. Dengan maksimal ukuran gambar 2MB</div>');
+				redirect('user/biodata');
 			}else{
 								$data = array('foto' => $this->upload->data());
 								$uploadData = $this->upload->data();
@@ -176,14 +176,14 @@ class User extends CI_Controller {
 		}
 	}
 
-	public function Kontak()
+	public function kontak()
 	{
     $data['title'] = 'Kontak Darurat';
     $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
     $data['user'] = $q->row_array();
 		$data['kontak'] = $this->db->get_where('kontak', array('nim'=> $this->session->userdata('nim')))->result();
     $this->load->view('backend/header', $data);
-		$this->load->view('backend/user/Kontak');
+		$this->load->view('backend/user/kontak');
 		$this->load->view('backend/footer');
 	}
 
