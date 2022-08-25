@@ -18,9 +18,6 @@
 
     <title>Dirmahasiswa2020 | <?= $title ?></title>
 
-    <meta name="description" content="" />
-
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

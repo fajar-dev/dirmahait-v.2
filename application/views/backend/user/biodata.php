@@ -198,7 +198,7 @@
                               <?php }else{ ?>
                                 <option disabled>--- Pilih Provinsi --</option>
                                 <option selected="" value="<?php echo htmlentities($user['provinsi'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['provinsi'], ENT_QUOTES, 'UTF-8');?></option>
-                                <?php foreach ($provinsi as $data) { ?>
+                                <?php foreach ($select_provinsi as $data) { ?>
                                   <option value="<?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?></option>
                                 <?php } ?>
                               <?php } ?>
@@ -215,7 +215,7 @@
                               <?php }else{ ?>
                                 <option disabled>--- Pilih Provinsi --</option>
                                 <option  selected="" value="<?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?></option>
-                                <?php foreach ($kabkota as $data) { ?>
+                                <?php foreach ($select_kabkota as $data) { ?>
                                   <option value="<?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?></option>
                                 <?php } ?>
                               <?php } ?>
