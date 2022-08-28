@@ -22,7 +22,7 @@
                             </a>
                           <div class="button-wrapper">
                             <h4 class="fw-bold"><?php echo htmlentities($mhs->nama, ENT_QUOTES, 'UTF-8');?></h4>
-                            <p class="mb-0 pt-0"><?php echo htmlentities($mhs->nim, ENT_QUOTES, 'UTF-8');?></p>
+                            <p class="mb-0 pt-0">(<?php echo htmlentities($mhs->kelas, ENT_QUOTES, 'UTF-8');?>) <?php echo htmlentities($mhs->nim, ENT_QUOTES, 'UTF-8');?></p>
                           </div>
                         </div>
                       </div>

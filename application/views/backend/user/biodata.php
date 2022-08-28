@@ -55,9 +55,65 @@
                       <hr class="my-0" />
                       <div class="card-body">
                         <div class="row">
-                          <div class="mb-3 col-md-12">
+                          <div class="mb-3 col-md-6">
                             <label for="nim" class="form-label">NIM</label>
                             <input class="form-control" type="text" value="<?php echo htmlentities($user['nim'], ENT_QUOTES, 'UTF-8');?>" readonly id="nim" />
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="kelas" class="form-label">Unit Kelas :</label>
+                            <select id="kelas" name="kelas" class="select2 form-select">
+                            <?php if($user['kelas'] == 'A1') { ?>
+                              <option value="A1">A1</option>
+                              <option value="A2">A2</option>
+                              <option value="A3">A3</option>
+                              <option value="A4">A4</option>
+                              <option value="A5">A5</option>
+                              <option value="A6">A6</option>
+                            <?php }elseif($user['kelas'] == 'A2') { ?>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                              <option value="A3">A3</option>
+                              <option value="A4">A4</option>
+                              <option value="A5">A5</option>
+                              <option value="A6">A6</option>
+                            <?php }elseif($user['kelas'] == 'A3') { ?>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                              <option value="A4">A4</option>
+                              <option value="A5">A5</option>
+                              <option value="A6">A6</option>
+                            <?php }elseif($user['kelas'] == 'A4') { ?>
+                              <option value="A4">A4</option>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                              <option value="A5">A5</option>
+                              <option value="A6">A6</option>
+                            <?php }elseif($user['kelas'] == 'A5') { ?>
+                              <option value="A5">A5</option>
+                              <option value="A4">A4</option>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                              <option value="A6">A6</option>
+                            <?php }elseif($user['kelas'] == 'A6') { ?>
+                              <option value="A6">A6</option>
+                              <option value="A5">A5</option>
+                              <option value="A4">A4</option>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                            <?php }else { ?>
+                              <option value="">-- Pilih Unit Kelas --</option>
+                              <option value="A1">A1</option>
+                              <option value="A2">A2</option>
+                              <option value="A3">A3</option>
+                              <option value="A4">A4</option>
+                              <option value="A5">A5</option>
+                              <option value="A6">A6</option>
+                            <?php } ?>
+                            </select>    
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="nama" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
@@ -198,7 +254,7 @@
                               <?php }else{ ?>
                                 <option disabled>--- Pilih Provinsi --</option>
                                 <option selected="" value="<?php echo htmlentities($user['provinsi'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['provinsi'], ENT_QUOTES, 'UTF-8');?></option>
-                                <?php foreach ($provinsi as $data) { ?>
+                                <?php foreach ($select_provinsi as $data) { ?>
                                   <option value="<?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?></option>
                                 <?php } ?>
                               <?php } ?>
@@ -215,7 +271,7 @@
                               <?php }else{ ?>
                                 <option disabled>--- Pilih Provinsi --</option>
                                 <option  selected="" value="<?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($user['kabkota'], ENT_QUOTES, 'UTF-8');?></option>
-                                <?php foreach ($kabkota as $data) { ?>
+                                <?php foreach ($select_kabkota as $data) { ?>
                                   <option value="<?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?>"><?php echo htmlentities($data->name, ENT_QUOTES, 'UTF-8');?></option>
                                 <?php } ?>
                               <?php } ?>

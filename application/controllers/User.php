@@ -79,8 +79,10 @@ class User extends CI_Controller {
     $q = $this->db->select('*')->from('mahasiswa')->join('admin', 'admin.nim_mhs=mahasiswa.nim', 'left')->where('nim', $this->session->userdata('nim'))->get();
     $data['user'] = $q->row_array();
 		$data['kontak'] = $this->db->get_where('kontak', array('nim'=> $this->session->userdata('nim')))->result();
+		$data['select_provinsi'] = $this->db->get_where('provinsi', array('name !='=> $data['user']['provinsi']))->result();
 		$data['provinsi'] = $this->db->get('provinsi')->result();
 		$data['kabkota'] = $this->db->get('kabkota')->result();
+		$data['select_kabkota'] = $this->db->get_where('kabkota', array('name !='=> $data['user']['kabkota']))->result();
     $this->load->view('backend/header', $data);
 		$this->load->view('backend/user/biodata');
 		$this->load->view('backend/footer');
@@ -89,6 +91,7 @@ class User extends CI_Controller {
 	public function biodata_update(){
 		if(empty($_FILES['foto']['name'])){
 			$data = array(
+					'kelas' => $this->input->post('kelas'),
 					'nama' => $this->input->post('nama'),
 					'kelamin' => $this->input->post('jk'),
 					'tempat_lahir' => $this->input->post('tempat_lahir'),
@@ -137,6 +140,7 @@ class User extends CI_Controller {
 								$uploadData = $this->upload->data();
 								$hasil = $uploadData['file_name'];
 								$data = array(
+									'kelas' => $this->input->post('kelas'),
 									'nama' => $this->input->post('nama'),
 									'kelamin' => $this->input->post('jk'),
 									'tempat_lahir' => $this->input->post('tempat_lahir'),
