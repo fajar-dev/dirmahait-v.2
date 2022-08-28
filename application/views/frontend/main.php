@@ -121,6 +121,11 @@
                                       </td>
                                     </tr>
                                     <tr>
+                                      <td>Unit Kelas </td>
+                                      <td>:</td>
+                                      <td><?php echo htmlentities($data->kelas, ENT_QUOTES, 'UTF-8');?></td>
+                                    </tr>
+                                    <tr>
                                       <td>Jenis Kelamin </td>
                                       <td>:</td>
                                       <td><?php echo htmlentities($data->kelamin, ENT_QUOTES, 'UTF-8');?></td>

@@ -91,6 +91,7 @@ class User extends CI_Controller {
 	public function biodata_update(){
 		if(empty($_FILES['foto']['name'])){
 			$data = array(
+					'kelas' => $this->input->post('kelas'),
 					'nama' => $this->input->post('nama'),
 					'kelamin' => $this->input->post('jk'),
 					'tempat_lahir' => $this->input->post('tempat_lahir'),
@@ -139,6 +140,7 @@ class User extends CI_Controller {
 								$uploadData = $this->upload->data();
 								$hasil = $uploadData['file_name'];
 								$data = array(
+									'kelas' => $this->input->post('kelas'),
 									'nama' => $this->input->post('nama'),
 									'kelamin' => $this->input->post('jk'),
 									'tempat_lahir' => $this->input->post('tempat_lahir'),
