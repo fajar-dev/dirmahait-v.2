@@ -56,23 +56,23 @@ class User extends CI_Controller {
 		$data['aktif'] = $this->db->get_where('mahasiswa', array('status'=>1))->num_rows();
 		$data['pending'] = $this->db->get_where('mahasiswa', array('status'=>0))->num_rows();
 		$data['suspend'] = $this->db->get_where('mahasiswa', array('status'=>2))->num_rows();
-    $chart= $this->db->select('provinsi, COUNT(provinsi) AS hasil FROM mahasiswa WHERE provinsi IS NOT NULL GROUP BY provinsi')->get();
+    $chart= $this->db->select('provinsi, COUNT(provinsi) AS hasil FROM mahasiswa WHERE status = 1 AND provinsi IS NOT NULL GROUP BY provinsi')->get();
     $data['provinsi'] = $chart->result();
-		$chart= $this->db->select('kabkota, COUNT(kabkota) AS hasil FROM mahasiswa WHERE kabkota IS NOT NULL GROUP BY kabkota')->get();
+		$chart= $this->db->select('kabkota, COUNT(kabkota) AS hasil FROM mahasiswa WHERE status = 1 AND kabkota IS NOT NULL GROUP BY kabkota')->get();
     $data['kabkota'] = $chart->result();
-		$data['laki'] = $this->db->get_where('mahasiswa', array('kelamin'=>'laki-laki'))->num_rows();
-		$data['perempuan'] = $this->db->get_where('mahasiswa', array('kelamin'=>'perempuan'))->num_rows();
-		$data['islam'] = $this->db->get_where('mahasiswa', array('agama'=>'islam'))->num_rows();
-		$data['kristen'] = $this->db->get_where('mahasiswa', array('agama'=>'kristen'))->num_rows();
-		$data['katolik'] = $this->db->get_where('mahasiswa', array('agama'=>'katolik'))->num_rows();
-		$data['hindu'] = $this->db->get_where('mahasiswa', array('agama'=>'hindu'))->num_rows();
-		$data['budha'] = $this->db->get_where('mahasiswa', array('agama'=>'budha'))->num_rows();
+		$data['laki'] = $this->db->get_where('mahasiswa', array('kelamin'=>'laki-laki', 'status'=>'1'))->num_rows();
+		$data['perempuan'] = $this->db->get_where('mahasiswa', array('kelamin'=>'perempuan', 'status'=>'1'))->num_rows();
+		$data['islam'] = $this->db->get_where('mahasiswa', array('agama'=>'islam', 'status'=>'1' ))->num_rows();
+		$data['kristen'] = $this->db->get_where('mahasiswa', array('agama'=>'kristen', 'status'=>'1'))->num_rows();
+		$data['katolik'] = $this->db->get_where('mahasiswa', array('agama'=>'katolik', 'status'=>'1'))->num_rows();
+		$data['hindu'] = $this->db->get_where('mahasiswa', array('agama'=>'hindu', 'status'=>'1'))->num_rows();
+		$data['budha'] = $this->db->get_where('mahasiswa', array('agama'=>'budha', 'status'=>'1'))->num_rows();
 		//print_r($a);die;
     $this->load->view('backend/header', $data);
 		$this->load->view('backend/user/dashboard');
 		$this->load->view('backend/footer');
 	}
-
+	
 	public function biodata()
 	{
     $data['title'] = 'Biodata';
