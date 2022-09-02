@@ -69,6 +69,8 @@
                               <option value="A4">A4</option>
                               <option value="A5">A5</option>
                               <option value="A6">A6</option>
+							  <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php }elseif($user['kelas'] == 'A2') { ?>
                               <option value="A2">A2</option>
                               <option value="A1">A1</option>
@@ -76,6 +78,8 @@
                               <option value="A4">A4</option>
                               <option value="A5">A5</option>
                               <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php }elseif($user['kelas'] == 'A3') { ?>
                               <option value="A3">A3</option>
                               <option value="A2">A2</option>
@@ -83,6 +87,8 @@
                               <option value="A4">A4</option>
                               <option value="A5">A5</option>
                               <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php }elseif($user['kelas'] == 'A4') { ?>
                               <option value="A4">A4</option>
                               <option value="A3">A3</option>
@@ -90,6 +96,8 @@
                               <option value="A1">A1</option>
                               <option value="A5">A5</option>
                               <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php }elseif($user['kelas'] == 'A5') { ?>
                               <option value="A5">A5</option>
                               <option value="A4">A4</option>
@@ -97,7 +105,29 @@
                               <option value="A2">A2</option>
                               <option value="A1">A1</option>
                               <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php }elseif($user['kelas'] == 'A6') { ?>
+                              <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
+                              <option value="A5">A5</option>
+                              <option value="A4">A4</option>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                            <?php }elseif($user['kelas'] == 'A7') { ?>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
+                              <option value="A6">A6</option>
+                              <option value="A5">A5</option>
+                              <option value="A4">A4</option>
+                              <option value="A3">A3</option>
+                              <option value="A2">A2</option>
+                              <option value="A1">A1</option>
+                            <?php }elseif($user['kelas'] == 'A8') { ?>
+                              <option value="A6">A8</option>
+                              <option value="A6">A7</option>
                               <option value="A6">A6</option>
                               <option value="A5">A5</option>
                               <option value="A4">A4</option>
@@ -112,6 +142,8 @@
                               <option value="A4">A4</option>
                               <option value="A5">A5</option>
                               <option value="A6">A6</option>
+                              <option value="A6">A7</option>
+                              <option value="A6">A8</option>
                             <?php } ?>
                             </select>    
                           </div>
