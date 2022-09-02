@@ -72,7 +72,7 @@ class User extends CI_Controller {
 		$this->load->view('backend/user/dashboard');
 		$this->load->view('backend/footer');
 	}
-
+	
 	public function biodata()
 	{
     $data['title'] = 'Biodata';
