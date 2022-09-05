@@ -24,7 +24,7 @@ Security:
 1. Recapthca
 2. HSTS
 
-### kredit
+## kredit
 Developer:
  1. Fajar Rivaldi Chan
  2. Brucel Duta Samudera
