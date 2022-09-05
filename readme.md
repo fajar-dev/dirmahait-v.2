@@ -1,6 +1,6 @@
 # Direktori Mahasiswa Teknik Informatika Angangkatan 2020 Universitas Malikussaleh
 V.2 release :
-tif-unimal20.web.id
+https://tif-unimal20.web.id
 
 ## technology information
 bahasa:
