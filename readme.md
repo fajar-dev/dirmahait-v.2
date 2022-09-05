@@ -19,6 +19,7 @@ Library :
 5. jquery
 6. Datatables
 7. Bootstrap Icon
+8. mpdf
 
 Security:
 1. Recapthca
