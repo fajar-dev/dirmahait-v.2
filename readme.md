@@ -15,10 +15,10 @@ Framework :
 Library :
 1. List.js
 2. select2
-3.Sweetalert
-4. jquery
-5. Datatables
-6. Bootstrap Icon
+3. Sweetalert
+5. jquery
+6. Datatables
+7. Bootstrap Icon
 
 Security:
 1. Recapthca
@@ -26,9 +26,9 @@ Security:
 
 ### kredit
 Developer:
- Fajar Rivaldi Chan
- Brucel Duta Samudera
- Sukma Rizky
- Adi Prasetyo
+ 1. Fajar Rivaldi Chan
+ 2. Brucel Duta Samudera
+ 3. Sukma Rizky
+ 4. Adi Prasetyo
 
 ![gambar.png](https://user-images.githubusercontent.com/69442735/188229908-5a49d9e8-a56c-426a-8678-583c5199bc4a.png)
