@@ -508,6 +508,7 @@ class Admin extends CI_Controller {
 
   public function aktifkan($id, $url)
 	{
+    $nim = $this->input->get('nim');
     $this->db->set('status', 1);
     $this->db->where('id', $id);
     $this->db->update('mahasiswa');
@@ -527,11 +528,16 @@ class Admin extends CI_Controller {
       </div>
     </div>
     ');
-    redirect(base_url('admin/'.$url)); 
+    if(empty($nim)){
+      redirect(base_url('admin/'.$url)); 
+    }else{
+      redirect(base_url('admin/'.$url.'/'.$nim)); 
+    }
 	}
 
   public function suspend($id, $url)
 	{
+    $nim = $this->input->get('nim');
     $this->db->set('status', 2);
     $this->db->where('id', $id);
     $this->db->update('mahasiswa');
@@ -550,7 +556,11 @@ class Admin extends CI_Controller {
       </div>
     </div>
     ');
-    redirect(base_url('admin/'.$url)); 
+    if(empty($nim)){
+      redirect(base_url('admin/'.$url)); 
+    }else{
+      redirect(base_url('admin/'.$url.'/'.$nim)); 
+    }
 	}
 
   public function hapus($id)
