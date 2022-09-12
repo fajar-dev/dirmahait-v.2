@@ -83,11 +83,22 @@
               <div class="card-body p-4">
                 <pre>
                   {
-                    "Responses": "200 OK",
-                    "status": "failed",
-                    "data": {
-                        "message": "Key Tidak Terdaftar / key Kosong"
-                    }
+                    "nama": "Dummy",
+                    "nim": "123456789",
+                    "Status_mahasiswa": "aktif",
+                    "kelas": "A1",
+                    "jenis_kelamin": Laki-Laki,
+                    "tempat_lahir": Lhokseumawe,
+                    "tanggal_lahir": 2002-06-14,
+                    "hobi": Ngoding,
+                    "agama": Islam,
+                    "provinsi_asal": Aceh,
+                    "kabkota_asal": Kota Lhokseumawe,
+                    "alamat_asal": ujong Blang, Lhokseumawe,
+                    "alamat_kost": Blang Pulo, Lhokseumawe,
+                    "instagram": @dummy_test,
+                    "quotes": Lorem Ipsum Dolar Sit Amet,
+                    "foto": "http://localhost/dirmahait2/file/avatar.png"
                   }
                 </pre>
               </div>
@@ -99,9 +110,7 @@
                   {
                     "Responses": "200 OK",
                     "status": "failed",
-                    "data": {
-                        "message": "Key Tidak Terdaftar / key Kosong"
-                    }
+                    "message": "Key Tidak Terdaftar / key Kosong"
                   }
                 </pre>
               </div>
