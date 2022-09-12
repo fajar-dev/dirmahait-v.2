@@ -45,39 +45,13 @@
             <div class="card">
               <div class="card-body p-4">
                <pre>
-                <?= site_url() ?>api/{KEY API} 
+                <?= site_url() ?>api/key/{KEY API} 
 
                 <span class="text-muted">//contoh:</span>
-                <?= site_url() ?>api/4553eb3ff328b4868a7a1e6e53cd28b4
+                <?= site_url() ?>api/key/4553eb3ff328b4868a7a1e6e53cd28b4
                </pre>
               </div>
             </div>
-            <h4 class="pb-1 pt-5">Query Parameters</h4>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Field</th>
-                  <th scope="col">Type</th>
-                  <th scope="col">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
             <h4 class="pb-1 pt-5"><span class="text-success">Sukses</span> Responses example in json</h4>
             <div class="card">
               <div class="card-body p-4">
