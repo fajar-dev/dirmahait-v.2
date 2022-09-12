@@ -19,7 +19,6 @@ class Page extends CI_Controller {
 
 	public function docs()
 	{
-		redirect(base_url('page/maintenace'));
 		$data['title']= 'Documentation';
 		$this->load->view('frontend/header');
 		$this->load->view('frontend/docs');

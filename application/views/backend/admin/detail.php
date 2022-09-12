@@ -160,21 +160,21 @@
                       <div class="card">
                         <div class="card-body">
                             <?php if($mhs->status == 1){?>
-                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-danger w-100">
+                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn btn-danger w-100">
                                 <span class="tf-icons bx bx-x fw-bold"></span>
                                   Suspend
                               </a>
                             <?php }elseif($mhs->status == 2){?>
-                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-success w-100 mb-3">
+                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn btn-success w-100 mb-3">
                                 <span class="tf-icons bx bx-check fw-bold"></span>
                                   Aktifkan
                               </a>
                             <?php }else{ ?>
-                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-success w-100 mb-3">
+                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn btn-success w-100 mb-3">
                                 <span class="tf-icons bx bx-check fw-bold"></span>
                                   Aktifkan
                               </a>
-                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-danger w-100">
+                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn btn-danger w-100">
                                 <span class="tf-icons bx bx-x fw-bold"></span>
                                   Suspend
                               </a>
