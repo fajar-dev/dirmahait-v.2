@@ -6,10 +6,20 @@
 
               <div class="row">
                 <div class="col-md-6">
-                  <div class="card mb-4 py-4">
+                  <div class="card mb-4 pb-4">
                     <!-- Account -->
                     <div class=" p-lg-4 pt-0">
-                    <div class="card-body mb-0 pb-0">
+                      <div class="card-body mb-0 pb-0">
+                      <div class="text-md-end pb-4 pb-lg-0">
+                        status akun:
+                            <?php if($mhs->status == 1){?>
+                              <span class="badge bg-label-success">Aktif</span>
+                            <?php }elseif($mhs->status == 2){?>
+                              <span class="badge bg-label-danger">Suspend</span>
+                            <?php }else{ ?>
+                              <span class="badge bg-label-warning">Pending</span>
+                            <?php } ?>
+                        </div>
                         <div class="d-flex align-items-start align-items-sm-center gap-4">
                             <a class="test-popup-link" href="<?= base_url('file/').$mhs->foto ?>">
                             <img
@@ -113,35 +123,65 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="card mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                      <h5 class="card-title m-0 me-2">Kontak Darurat</h5>
-                    </div>
-                    <!-- Account -->
-                      <div class="card-body">
-                        <div class="table-responsive text-nowrap">
-                          <table class="table table-bordered">
-                            <thead>
-                              <tr>
-                                <th>Nama</th>
-                                <th>Nomor HP</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($kontak as $data) { ?>
-                              <tr>
-                                <td>
-                                  <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></strong>
-                                </td>
-                                <td><?php echo htmlentities($data->nomor, ENT_QUOTES, 'UTF-8');?></td>
-                              </tr>
-                              <?php } ?>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                          <h5 class="card-title m-0 me-2">Kontak Darurat</h5>
+                        </div>
+                        <!-- Account -->
+                          <div class="card-body">
+                            <div class="table-responsive text-nowrap">
+                              <table class="table table-bordered">
+                                <thead>
+                                  <tr>
+                                    <th>Nama</th>
+                                    <th>Nomor HP</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <?php foreach ($kontak as $data) { ?>
+                                  <tr>
+                                    <td>
+                                      <i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo htmlentities($data->nama, ENT_QUOTES, 'UTF-8');?></strong>
+                                    </td>
+                                    <td><?php echo htmlentities($data->nomor, ENT_QUOTES, 'UTF-8');?></td>
+                                  </tr>
+                                  <?php } ?>
 
-                            </tbody>
-                          </table>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        <!-- /Account -->
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                            <?php if($mhs->status == 1){?>
+                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-danger w-100">
+                                <span class="tf-icons bx bx-x fw-bold"></span>
+                                  Suspend
+                              </a>
+                            <?php }elseif($mhs->status == 2){?>
+                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-success w-100 mb-3">
+                                <span class="tf-icons bx bx-check fw-bold"></span>
+                                  Aktifkan
+                              </a>
+                            <?php }else{ ?>
+                              <a href="<?= base_url('admin/aktifkan/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-success w-100 mb-3">
+                                <span class="tf-icons bx bx-check fw-bold"></span>
+                                  Aktifkan
+                              </a>
+                              <a href="<?= base_url('admin/suspend/'.$mhs->id.'/mhs_detail/?nim='.$mhs->nim) ?>" class="btn rounded-pill btn-danger w-100">
+                                <span class="tf-icons bx bx-x fw-bold"></span>
+                                  Suspend
+                              </a>
+                            <?php } ?>
                         </div>
                       </div>
-                    <!-- /Account -->
+                    </div>
                   </div>
                 </div>
               </div>
