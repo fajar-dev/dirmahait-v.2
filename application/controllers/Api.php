@@ -24,7 +24,7 @@ class Api extends CI_Controller {
         }elseif($x->status_mhs == 3){ 
         $stat = 'lulus'; 
       };
-      $data_arr = array(
+      $data_arr[] = array(
         'nama' => $x->nama,
         'nim' => $x->nim,
         'Status_mahasiswa' => $stat,
