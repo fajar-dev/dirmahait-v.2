@@ -56,24 +56,31 @@
             <div class="card">
               <div class="card-body p-4">
                 <pre>
-                  {
-                    "nama": "Dummy",
-                    "nim": "123456789",
-                    "Status_mahasiswa": "aktif",
-                    "kelas": "A1",
-                    "jenis_kelamin": Laki-Laki,
-                    "tempat_lahir": Lhokseumawe,
-                    "tanggal_lahir": 2002-06-14,
-                    "hobi": Ngoding,
-                    "agama": Islam,
-                    "provinsi_asal": Aceh,
-                    "kabkota_asal": Kota Lhokseumawe,
-                    "alamat_asal": ujong Blang, Lhokseumawe,
-                    "alamat_kost": Blang Pulo, Lhokseumawe,
-                    "instagram": @dummy_test,
-                    "quotes": Lorem Ipsum Dolar Sit Amet,
-                    "foto": "http://localhost/dirmahait2/file/avatar.png"
-                  }
+                {
+                  "Responses": "200 OK"
+                  "status": "Success"
+                  "message": "Berhasil mengambil data"
+                  "data": [
+                        {
+                          "nama": "Dummy Test"
+                          "nim": "123456789"
+                          "Status_mahasiswa": "aktif"
+                          "kelas": "A1",
+                          "jenis_kelamin": Laki-Laki
+                          "tempat_lahir": Lhokseumawe
+                          "tanggal_lahir": 2002-06-14
+                          "hobi": Ngoding
+                          "agama": Islam
+                          "provinsi_asal": Aceh
+                          "kabkota_asal": Kota Lhokseumawe
+                          "alamat_asal": ujong Blang, Lhokseumawe
+                          "alamat_kost": Blang Pulo, Lhokseumawe
+                          "instagram": @dummy_test
+                          "quotes": Lorem Ipsum Dolar Sit Amet
+                          "foto": "http://localhost/dirmahait2/file/avatar.png"
+                        }
+                      ] 
+                }
                 </pre>
               </div>
             </div>
@@ -82,9 +89,10 @@
               <div class="card-body p-4">
                 <pre>
                   {
-                    "Responses": "200 OK",
-                    "status": "failed",
+                    "Responses": "200 OK"
+                    "status": "failed"
                     "message": "Key Tidak Terdaftar / key Kosong"
+                    "data": []
                   }
                 </pre>
               </div>
