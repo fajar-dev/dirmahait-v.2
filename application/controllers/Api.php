@@ -49,7 +49,7 @@ class Api extends CI_Controller {
         'message' => 'Berhasil mengambil data ',
         'data' => $data_arr
       );
-    }
+    } 
       echo json_encode($json);
     }else{
       $json = array(
