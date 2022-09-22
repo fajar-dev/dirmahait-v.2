@@ -16,7 +16,7 @@ class Page extends CI_Controller {
 		$this->load->view('frontend/main');
 		$this->load->view('frontend/footer');
 	}
-
+ 
 	public function docs()
 	{
 		$data['title']= 'Documentation';

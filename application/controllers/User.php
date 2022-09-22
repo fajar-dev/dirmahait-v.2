@@ -125,7 +125,7 @@ class User extends CI_Controller {
 					</div>
 				</div>
 				');
-      redirect(base_url('user/biodata')); 
+      redirect(base_url('user/biodata'));  
 		}else{
 			$config['upload_path']        = './file';
 			$config['allowed_types']       = 'img|png|jpeg|gif|jpg';

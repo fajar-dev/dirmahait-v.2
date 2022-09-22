@@ -58,7 +58,7 @@
           $("#toast").removeClass("show");
         }, 3000);
     </script>
-
+ 
     <script type="text/javascript">
         window.onload = function () {
           document.getElementById("pw").onchange = validatePassword;
